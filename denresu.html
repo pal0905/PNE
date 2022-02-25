@@ -249,8 +249,9 @@ height:20px
 				<label class="col-sm-3 col-form-label required">①組合員コード：</label>
 
 				<div class="col-sm-9" style="display:inline-flex">
-						<p><input type="tel" id="kmcode" class="form-control w-50" maxlength='8' placeholder="組合員コード"></p>
-						<span><input type="button" class="btn btn-info"	value="リセット" onclick="reload()"></span>
+						<p><input type="tel" id="kmcode" class="form-control" maxlength='8' placeholder="組合員コード"></p>
+						<input type="text" class="nontext wi w-25" disabled>
+						<input type="button" class="btn btn-info" value="リセット" onclick="reload()">
 				</div>
 			</div>
 			<div class="form-row">
@@ -712,7 +713,7 @@ function reload() {
 											insday = '';
 											instime = '';
 											delfox = "0";
-											address = 'tos_oka2@palcoop.or.jp';
+											address = 'kumikoeTest@ml.palcoop.or.jp';
 											subject = '伝レス-返金';
 											body = '{"body":{"kmcode":"'+kmcode+
 													'","kikakai":"'+kikakai+
