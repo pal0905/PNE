@@ -405,9 +405,11 @@ const checkOnline = async () => {
 
   try {
     await fetch(`https://pal0905.github.io/PNE/table.html`);
-console.log('オンライン')
+console.log('オンライン');
+	  alert("オンラインです。");
   } catch {
-console.log('オフライン')
+console.log('オフライン');
+	  alert("オフラインです。");
     return false;
   }
 
