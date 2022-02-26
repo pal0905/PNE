@@ -298,7 +298,7 @@ height:20px
 						    </label>
 						<input type="hidden" id="non-kikakunm2">
 					</span></div>
-					<label class="h6">※配送回から過去3か月前までの明細を調べる事ができます。</label>
+					<label class="h6">※配送回から過去3か月前までの<br>　明細を調べる事ができます。</label>
 				</div>
 			</div>
 
@@ -322,48 +322,6 @@ height:20px
 
 
 window.onload=function(){
-
-
-
-
-    var nowDate = new Date();
-    var yyyy = nowDate.getFullYear();
-    var mm = ("0"+(nowDate.getMonth()+1)).slice(-2);
-    var dd = ("0"+nowDate.getDate()).slice(-2);
-    // 今日の日付
-    var inputElem = '20220223';
-    var elem =yyyy+'-'+mm+'-'+dd;
-    // 結果メソッド
-    calcDate();
-
-    // 日付の引き算をして、表示する関数
-    function calcDate(){
-
-        var outputDate = new Date(elem);
-        var subMonth = '3';
-
-        // 入力した月を減算
-        outputDate.setMonth(outputDate.getMonth() - subMonth);
-        // yyyy/mm/dd 形式で表示
-        var predate = outputDate.toLocaleDateString();
-    };
-
-
-
-
-// 今回指定する年月日情報（２０２０年１０月１日）
-var yearStr = 2020 ;
-var monthStr = 10 ;
-var dayStr = 1;
-// Dateオブジェクトには実際の月ー１の値を指定するため
-var jsMonth = monthStr - 1 ;
-// Dateオブジェクトは曜日情報を0から6の数値で保持しているため、翻訳する
-var dayOfWeekStrJP = [ "日", "月", "火", "水", "木", "金", "土" ] ;
-// 指定日付で初期化したDateオブジェクトのインスタンスを生成する
-var date = new Date( yearStr, jsMonth , dayStr );
-// 木曜日は数値の4として保持されているため、dayOfWeekStrJP[4]の値が出力される
-console.log(dayOfWeekStrJP[date.getDay()] + '曜日');
-
 
 
 	for(var j = 1; j <= 12; j++) {
