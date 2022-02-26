@@ -298,7 +298,7 @@ height:20px
 						    </label>
 						<input type="hidden" id="non-kikakunm2">
 					</span></div>
-					<label class="h6">※配送回から過去3か月前までの明細を調べる事ができます。</label>
+					<label class="h6">※配送回から過去3か月前までの<br>　明細を調べる事ができます。</label>
 				</div>
 			</div>
 
@@ -400,61 +400,27 @@ function insertRow(id) {
 }
 
 
-	
-  
 
-	
-	
-	
+const checkOnline = async () => {
 
-if( navigator.onLine ){
-  console.log('オンライン')
-const connectionInfo = navigator.connection;
+  try {
+    await fetch(`https://pal0905.github.io/PNE/table.html`);
+console.log('オンライン')
+  } catch {
+console.log('オフライン')
+    return false;
+  }
 
-if (connectionInfo !== undefined) {
-	const init = function() {
-		document.getElementById('type').textContent = connectionInfo.type;
-		document.getElementById('effectiveType').textContent = connectionInfo.effectiveType;
-		document.getElementById('downlink').textContent = connectionInfo.downlink + ' Mb/s';
-		document.getElementById('downlinkMax').textContent = connectionInfo.downlinkMax + ' Mb/s';
-		document.getElementById('rtt').textContent = connectionInfo.rtt + ' ms';
-		document.getElementById('saveData').textContent = connectionInfo.saveData;
-	};
-	init();
-
-	if ('onchange' in connectionInfo) {
-		connectionInfo.addEventListener('change', init);
-	} else if ('ontypechange' in connectionInfo) {
-		connectionInfo.addEventListener('typechange', init);
-	}
-}
-}
-else {
-  console.log('オフライン')
-}
-
+  return true;
+};
 
 
 
 
 window.onload=function(){
 
-	const date = new Date();
-  const timestamp = date.getTime();
+checkOnline();
 
-  try {
-    await fetch(`/favicon.ico?${timestamp}`);
-	  console.log('オンライン')
-  } catch {
-    return false;
-	  console.log('オフライン')
-  }
-
-  return true;
-	
-	
-	
-	
 const p1 = document.getElementById("p1");
 
 	if(localStorage.getItem('aryMemo') !== null){
