@@ -400,7 +400,12 @@ function insertRow(id) {
 }
 
 
+	
+  
 
+	
+	
+	
 
 if( navigator.onLine ){
   console.log('オンライン')
@@ -434,6 +439,22 @@ else {
 
 window.onload=function(){
 
+	const date = new Date();
+  const timestamp = date.getTime();
+
+  try {
+    await fetch(`/favicon.ico?${timestamp}`);
+	  console.log('オンライン')
+  } catch {
+    return false;
+	  console.log('オフライン')
+  }
+
+  return true;
+	
+	
+	
+	
 const p1 = document.getElementById("p1");
 
 	if(localStorage.getItem('aryMemo') !== null){
