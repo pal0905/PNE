@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- Latest compiled and minified CSS -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="apple-touch-icon" href="https://kasi-pro.github.io/kumi/favicon.ico" sizes="180x180">
+<style>
+body {
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-weight: bolder
+	line-height:25px;
+	font-size:1.2em;
+}
+.wrapper {
+  height: 100vh;
+  position: relative;
+}
+.balls-guruguru {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+}
+.ball {
+  width: 40%;
+  height: 70px;
+  position: absolute;
+  top: calc(50% - 10px);
+  transform-origin: 100% 50%;
+  left: 0;
+}
+.ball::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ball-1::before {
+  animation: ball-guruguru 1s linear 0s infinite;
+}
+.ball-2 {
+  transform: rotate(45deg);
+}
+.ball-2::before {
+  animation: ball-guruguru 1s linear -0.125s infinite;
+}
+.ball-3 {
+  transform: rotate(90deg);
+}
+.ball-3::before {
+  animation: ball-guruguru 1s linear -0.25s infinite;
+}
+.ball-4 {
+  transform: rotate(135deg);
+}
+.ball-4::before {
+  animation: ball-guruguru 1s linear -0.375s infinite;
+}
+.ball-5 {
+  transform: rotate(180deg);
+}
+.ball-5::before {
+  animation: ball-guruguru 1s linear -0.5s infinite;
+}
+.ball-6 {
+  transform: rotate(225deg);
+}
+.ball-6::before {
+  animation: ball-guruguru 1s linear -0.625s infinite;
+}
+.ball-7 {
+  transform: rotate(270deg);
+}
+.ball-7::before {
+  animation: ball-guruguru 1s linear -0.75s infinite;
+}
+.ball-8 {
+  transform: rotate(315deg);
+}
+.ball-8::before {
+  animation: ball-guruguru 1s linear -0.875s infinite;
+}
+@keyframes ball-guruguru {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+  100% {
+    width: 6px;
+    height: 6px;
+    opacity: .2;
+    margin-left: 7px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<div class="balls-guruguru">
+<span class="ball ball-1"></span>
+<span class="ball ball-2"></span>
+<span class="ball ball-3"></span>
+<span class="ball ball-4"></span>
+<span class="ball ball-5"></span>
+<span class="ball ball-6"></span>
+<span class="ball ball-7"></span>
+<span class="ball ball-8"></span>
+<div>
+</div>
+<div><label class="col-form-label">確認中…</label></div>
+
+</body>
+<script>
+
+
+
+
+const checkOnline = async () => {
+  try {
+// 4xx系, 5xx系のエラー確認
+var handleErrors = function(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+}
+
+var falg = false;
+// await fetch(`https://www.google.co.jp/webhp?hl=ja`)
+// await fetch(`https://pal0905.github.io/PNE/table.html`)
+// await fetch(`https://pal0905.github.io/PNE/denresu.html`)
+
+
+var intra = `https://www.google.co.jp/webhp?hl=ja`;
+var external=`https://pal0905.github.io/PNE/table.html`;
+
+await fetch(intra)
+.then(handleErrors).then(value => {
+falg = value;    
+if(falg == true){
+location = intra;
+console.log('Wi-Hi')
+}else{
+await fetch(external)
+.then(handleErrors).then(value => {
+falg = value;    
+if(falg == true){
+location = external;
+console.log('オンライン')
+}else{
+alert("システムにお問い合わせください。");
+}
+});
+}
+});
+
+  } catch {
+console.log("失敗や");
+   return false;
+ }
+console.log("成功や");
+  return true;
+};
+
+window.onload=function(){
+var flg = false;
+
+checkOnline().then(value => {
+flg = value;    
+if(flg == true){
+console.log('オンライン')
+location = 'https://pal0905.github.io/PNE/table.html';
+}else{
+console.log('オフライン')
+location = 'https://www.google.co.jp/webhp?hl=ja';
+}
+});
+}
+</script>
+</html>
