@@ -128,70 +128,74 @@ body {
 
 </body>
 <script>
-
-
-
-
-const checkOnline = async () => {
-  try {
 // 4xx系, 5xx系のエラー確認
 var handleErrors = function(response) {
   if (!response.ok) {
-    throw Error(response.statusText);
+    throw Error(response.ok);
   }
   return response;
 }
 
-var falg = false;
-// await fetch(`https://www.google.co.jp/webhp?hl=ja`)
-// await fetch(`https://pal0905.github.io/PNE/table.html`)
-// await fetch(`https://pal0905.github.io/PNE/denresu.html`)
+// エラー終了時の処理
+var onRejected = function(err) {
+console.log(err);
+alert("システムにご連絡ください。");
+};
+var offRejected = function(err) {
+console.log(err);
+init();
+};
 
+// 正常終了時の処理
+var onFulfilled = function(data) {
+ location = 'https://pal0905.github.io/PNE/table.html';
+};
+var offFulfilled = function(data) {
+ location = 'https://www.google.co.jp/webhp?hl=ja';
+};
 
-var intra = `https://www.google.co.jp/webhp?hl=ja`;
-var external=`https://pal0905.github.io/PNE/table.html`;
+function checkOnline(){
+  try {
+var external =`https://pal0905.github.io/PNE/table.html`;
 
-await fetch(intra)
-.then(handleErrors).then(value => {
-falg = value;    
-if(falg == true){
-location = intra;
-console.log('Wi-Hi')
-}else{
-await fetch(external)
-.then(handleErrors).then(value => {
-falg = value;    
-if(falg == true){
-location = external;
-console.log('オンライン')
-}else{
-alert("システムにお問い合わせください。");
-}
-});
-}
-});
-
+fetch(external).then(handleErrors).then(onFulfilled).catch(onRejected);
   } catch {
-console.log("失敗や");
    return false;
  }
-console.log("成功や");
   return true;
 };
 
-window.onload=function(){
-var flg = false;
+async function init() {
+    var data=await checkOnline();
+    console.log("データ"+data);
+if(data == false){alert("システムにご連絡ください。");}
+}
 
-checkOnline().then(value => {
-flg = value;    
-if(flg == true){
-console.log('オンライン')
-location = 'https://pal0905.github.io/PNE/table.html';
-}else{
-console.log('オフライン')
-location = 'https://www.google.co.jp/webhp?hl=ja';
+
+function checkOffline(){
+  try {
+var intra = `https://www.google.co.jp/webhp?hl=ja`;
+fetch(intra,{ mode: 'no-cors'}).then(handleErrors).then(offFulfilled).catch(offRejected);
+  } catch {
+   return false;
+ }
+  return true;
+};
+
+async function init2() {
+    var data=await checkOffline();
+    console.log("データ"+data);
+if(data == false){init();
+console.log("失敗したので外に");}
 }
-});
+
+
+window.onload=function(){
+
+init2();
+
 }
+
+
 </script>
 </html>
