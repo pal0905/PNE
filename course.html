@@ -356,17 +356,18 @@ const p1 = document.getElementById("p1");
 
 	if(pflag == 0 && sflag == 0){
 console.log("hear");
+            
 		p1.style.display ="block";
 	}else if(pflag == 1 && sflag == 0){
 console.log("hear2");
-		p1.style.display ="non";
+		document.getElementById('p1').style.display = "none";
 // 入れる配列(URLパラメータから取ってきて入れる)
 var array = ['0101', '1101', '2101', '3101', '4101', '5101', '6101', '7101', '8101', '9101'];
 
 // 配列をローカルストレージにいれる
 localStorage.setItem('aryMemo', JSON.stringify(array));
 	}else{
-p1.style.display ="non";
+		document.getElementById('p1').style.display = "none";
 }
 
 
