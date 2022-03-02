@@ -10,27 +10,14 @@
 	rel="stylesheet"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-<link rel="apple-touch-icon" href="https://kasi-pro.github.io/kumi/favicon.ico" sizes="180x180">
+<link rel="apple-touch-icon"
+	href="https://kasi-pro.github.io/kumi/favicon.ico" sizes="180x180">
 <style>
 body {
-	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	font-weight: bolder
-	line-height:25px;
-	font-size:1.2em;
-}
-
-textarea {
-	width: 100%;
-}
-
-#sendFrom {
-	margin: 15px auto;
-	width: 100%;
-	height: 100px;
-	border: solid 1px black;
-	background-color: #ddd;
-	line-height: 100px;
-	text-align: center;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo,
+		Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-weight: bolder line-height:25px;
+	font-size: 1.2em;
 }
 
 .nontext {
@@ -56,314 +43,138 @@ textarea {
 	border-radius: 10px;
 	display: inline-block;
 }
+
 label ~ label {
 	margin-left: 30px;
 }
 
-/* ベースのラジオボタン */
-.radio-btns input[type=radio] {
-  display: none;
+.wi {
+	width: 10px;
 }
 
-.radio-btns label {
-  position: relative;
-  padding: 5px 15px 5px 50px;
-  display: inline-block;
-  color: #fff;
-  font-weight: bold;
-  background: #48d1cc;
-  letter-spacing: 0.1em;
-  border-radius: 10px;
+.button1 {
+	border-radius: 30px;
+	background: orange;
+	width: 20px;
+	height: 20px
 }
 
-.radio-btns input[type=radio]  + label::before,
-.radio-btns input[type=radio]  + label::after {
-  position: absolute;
-  content: '';
-  display: block;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* 下 */
-.radio-btns input[type=radio]  + label::before {
-  border-radius: 30px;
-}
-
-.radio-btns input[type=radio]  + label::after {
-  height: 15px;
-  width: 15px;
-  background: #fff;
-  border-radius: 15px;
-  transition: .1s;
-}
-
-.radio-btns input[type=radio]:checked + label::after {
-  left: 30px;
-  background: #ffa500;
-}
-
-.radio-btns input[type=radio]:checked + label {
-  background: #005580;
-}
-.input-group,
-.input-group__control,
-.input-group__addon {
-  box-sizing:border-box;
-}
-
-.input-group {
-  display:table;
-  width:100%;
-  border-collapse:separate;
-  font-size:14px;
-}
-
-.input-group__control,
-.input-group__addon {
-  display:table-cell;
-  height:40px;
-  padding:8px 14px;
-}
-
-.input-group__control {
-  float:left;
-  width:100%;
-  margin:0;
-  border:1px solid #D3D3D3;
-  border-radius:5px;
-  font-size:14px;
-  font-family:inherit;
-  line-height:1.5;
-  -webkit-appearance:none;
-          appearance:none;
-}
-
-.input-group__addon {
-  width:1%;
-  border-width:1px 0 1px 1px;
-  border-style:solid;
-  border-color:#C0C0C0;
-  white-space:nowrap;
-  vertical-align:middle;
-  text-align:center;
-  line-height:1;
-}
-
-.input-group__control + .input-group__addon {
-  border-width:1px 1px 1px 0;
-}
-
-.wi{
- width: 10px;
-}
-.button1{
-border-radius:30px;
-background:orange;
-width:20px;
-height:20px
-}
 .switch3__label {
-    width: 37px;
-    position: relative;
-    display: inline-block;
-    padding-top: 3px;
+	width: 37px;
+	position: relative;
+	display: inline-block;
+	padding-top: 3px;
 }
-.switch3__content {
-    display: block;
-    cursor: pointer;
-    position: relative;
-    border-radius: 7px;
-    height: 14px;
-    background-color: rgba(34,31,31,.26);
-    -webkit-transition: all .1s .4s;
-       -moz-transition: all .1s .4s;
-        -ms-transition: all .1s .4s;
-         -o-transition: all .1s .4s;
-            transition: all .1s .4s;
-    overflow: hidden;
-}
-.switch3__content:after {
-    content: "";
-    display: block;
-    position: absolute;
 
-    width: 0;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: 7px;
-    -webkit-transition: all .5s;
-       -moz-transition: all .5s;
-        -ms-transition: all .5s;
-         -o-transition: all .5s;
-            transition: all .5s;
+.switch3__content {
+	display: block;
+	cursor: pointer;
+	position: relative;
+	border-radius: 7px;
+	height: 14px;
+	background-color: rgba(34, 31, 31, .26);
+	-webkit-transition: all .1s .4s;
+	-moz-transition: all .1s .4s;
+	-ms-transition: all .1s .4s;
+	-o-transition: all .1s .4s;
+	transition: all .1s .4s;
+	overflow: hidden;
 }
+
+.switch3__content:after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 0;
+	height: 100%;
+	top: 0;
+	left: 0;
+	border-radius: 7px;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-ms-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+
 .switch3__input {
-    display: none;
+	display: none;
 }
+
 .switch3__circle {
-    display: block;
-    top: 0px;
-    left: 0px;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    -webkit-border-radius: 10px;
-            border-radius: 10px;
-    background-color: #F1F1F1;
-    -webkit-transition: all .2s;
-       -moz-transition: all .2s;
-        -ms-transition: all .2s;
-         -o-transition: all .2s;
-            transition: all .2s;
-    -webkit-box-shadow: 0 2px 2px #ccc;
-            box-shadow: 0 2px 2px #ccc;
+	display: block;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background-color: #F1F1F1;
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+	-ms-transition: all .2s;
+	-o-transition: all .2s;
+	transition: all .2s;
+	-webkit-box-shadow: 0 2px 2px #ccc;
+	box-shadow: 0 2px 2px #ccc;
 }
+
 .switch3__input:checked ~ .switch3__circle {
-    left: 18px;
-    background-color: #00c4cc;
+	left: 18px;
+	background-color: #00c4cc;
 }
+
 .switch3__input:checked ~ .switch3__content {
-    border-color: transparent;
-    -webkit-transition: all 0s;
-       -moz-transition: all 0s;
-        -ms-transition: all 0s;
-         -o-transition: all 0s;
-            transition: all 0s;
+	border-color: transparent;
+	-webkit-transition: all 0s;
+	-moz-transition: all 0s;
+	-ms-transition: all 0s;
+	-o-transition: all 0s;
+	transition: all 0s;
 }
+
 .switch3__input:checked ~ .switch3__content:after {
-    background-color: rgba(55 190 176 / 25%);
-    width: 100%;
+	background-color: rgba(55 190 176/ 25%);
+	width: 100%;
 }
 </style>
 </head>
 <body>
 	<div class="container">
 		<div class="navbar">
-			<h1>明細問い合わせ</h1>
+			<h1>ドライアイス</h1>
 		</div>
 		<form id="content" name="content">
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label required">①組合員コード：</label>
+			<div id="p1" class="form-row">
+				<label class="col-sm-3 col-form-label required">職員員コード：</label>
 
-				<div class="col-sm-9" style="display:inline-flex">
-						<p><input type="tel" id="kmcode" class="form-control" maxlength='8' placeholder="組合員コード"></p>
-						<input type="text" class="nontext wi w-25" disabled>
-						<input type="button" class="btn btn-info h-75" value="リセット" onclick="reload()">
-				</div>
-			</div>
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label required">②企画回：</label>
-				<div class="col-sm-9">
-					<div>　～<span>
-						<select class="input-group__control w-25" id="kikaku-year" name="kikaku-year" disabled><option value="" selected>年</option></select>
-						<select class="input-group__control w-25" id="kikaku-month" name="kikaku-month" disabled><option value="" selected>月</option></select>
-						<select class="input-group__control w-25" id="kai" name="kai" disabled>
-						<option value="" selected>回</option>
-						<option value="1">1回</option>
-						<option value="2">2回</option>
-						<option value="3">3回</option>
-						<option value="4">4回</option>
-						<option value="5">5回</option>
-						</select><span><input type="text" class="nontext wi" disabled></span>
-
-						<input type="hidden" id="non-kikakunm">
-					</span></div>
-				</div>
-			</div>
-
-
-
-
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label"></label>
-				<div class="col-sm-9">
-					<div><span>
-						<select class="input-group__control w-25" id="kikaku-year2" name="kikaku-year2" disabled><option value="" selected>年</option></select>
-						<select class="input-group__control w-25" id="kikaku-month2" name="kikaku-month2" disabled><option value="" selected>月</option></select>
-						<select class="input-group__control w-25" id="kai2" name="kai2" disabled>
-						<option value="" selected>回</option>
-						<option value="1">1回</option>
-						<option value="2">2回</option>
-						<option value="3">3回</option>
-						<option value="4">4回</option>
-						<option value="5">5回</option>
-						</select><span><input type="text" class="nontext wi" disabled></span>
-						 <label class="switch3__label">
-						        <input type="checkbox" class="switch3__input" onclick="non2()"/>
-						        <span class="switch3__content"></span>
-						        <span class="switch3__circle"></span>
-						    </label>
-						<input type="hidden" id="non-kikakunm2">
-					</span></div>
-					<label class="h6">※配送回から過去3か月前までの<br>　明細を調べる事ができます。</label>
-				</div>
-			</div>
-
-
-
-
-
-			<div class="form-row">
-				<label class="col-sm-3 col-form-label">③注文番号：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-9" style="display: inline-flex">
 					<p>
-						<input type="tel" id="pcode" class="form-control w-50" maxlength='6'	placeholder="注文番号">
+						<input type="tel" id="kmcode" class="form-control" maxlength='8'
+							placeholder="組合員コード">
 					</p>
+					<input type="text" class="nontext wi w-25" disabled> <input
+						type="button" class="btn btn-info h-75" value="リセット"
+						onclick="reload()">
 				</div>
 			</div>
+			<div>
+
+<table id="targetTable">
+    <tbody>
+        <tr>
+            <td>コース</td>
+            <td></td>
+        </tr>
+    <tbody>
+</table>
+
+			</div>
+
 		</form>
 		<input type="button" id="sendFrom" value="メール作成"><br> <br>
 
-
-
-<input id="p1" type="text" />
-
-
-
-
-
-<input type="button" value="行追加" onclick="insertRow('sample1_table')" />
-<table id="sample1_table">
-    <tr>
-        <td nowrap>1-1</td>
-        <td nowrap><input type="button" value="行削除" onclick="deleteRow(this)" /></td>
-    </tr>
-</table>
-
-
-
-
-<table>
-	<tbody>
-		<tr>
-			<th>type</th>
-			<td id="type"></td>
-		</tr>
-		<tr>
-			<th>effectiveType</th>
-			<td id="effectiveType"></td>
-		</tr>
-		<tr>
-			<th>downlink</th>
-			<td id="downlink"></td>
-		</tr>
-		<tr>
-			<th>downlinkMax</th>
-			<td id="downlinkMax"></td>
-		</tr>
-		<tr>
-			<th>rtt</th>
-			<td id="rtt"></td>
-		</tr>
-		<tr>
-			<th>saveData</th>
-			<td id="saveData"></td>
-		</tr>
-	</tbody>
-</table>
 
 
 
@@ -374,93 +185,134 @@ height:20px
 	</div>
 </body>
 <script>
-
-
-/**
- * 行追加
- */
-function insertRow(id) {
-    // テーブル取得
-    var table = document.getElementById(id);
-    // 行を行末に追加
-    var row = table.insertRow(-1);
-    // セルの挿入
-    var cell1 = row.insertCell(-1);
-    var cell2 = row.insertCell(-1);
-    var cell3 = row.insertCell(-1);
-    // ボタン用 HTML
-    var button = '<input type="button" value="行削除" onclick="deleteRow(this)" />';
- 
-    // 行数取得
-    var row_len = table.rows.length;
- 
-    // セルの内容入力
-    cell1.innerHTML = row_len + "-" + 1;
-    cell2.innerHTML = button;
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+function tableMake(){
 
-
-const checkOnline = async () => {
-  const date = new Date();
-  const timestamp = date.getTime();
-
-  try {
-    await fetch(`https://pal0905.github.io/PNE/table.html`);
-console.log('オンライン')
-  } catch {
-console.log('オフライン')
-    return false;
-  }
-
-  return true;
-};
-
-
-
-
-window.onload=function(){
-
-checkOnline();
-
-const p1 = document.getElementById("p1");
-
-	if(localStorage.getItem('aryMemo') !== null){
-console.log("ここ" + p1.style.display);
-		// noneで非表示
-		p1.style.display ="none";
-	}else{
-console.log("ここ2" + p1.style.display);
-		// blockで表示
-		p1.style.display ="block";
-	}
-
-
-
-// 入れる配列
-var array = ['0101', '1101', '2101', '3101', '4101', '5101', '6101', '7101', '8101', '9101'];
-
-// 配列をローカルストレージにいれる
-localStorage.setItem('aryMemo', JSON.stringify(array));
 
 // 表示用の空の配列を作成
 var outarray = [];
 
 // ローカルストレージにデータがあるか確認後、取得してきて表示用に入れる
 if(localStorage.getItem('aryMemo') !== null){
-    outarray = JSON.parse( localStorage.getItem('aryMemo') );
+    outarray = JSON.parse( localStorage.getItem('aryMemo'));
+for(var i = 0; i < outarray.length;i++){
+
+
+// ボタン用 HTML
+var button = '<input type="button" id="sendfrom" value="変更">';
+// テーブル取得
+let table2 = document.getElementById('targetTable');
+let newRow = table2.insertRow();
+
+let newCell = newRow.insertCell();
+let newText = document.createTextNode(outarray[i]);
+newCell.appendChild(newText);
+
+newCell = newRow.insertCell();
+newCell.innerHTML = button;
+
+
+
+
+
+    // 行を行末に追加
+
+    // セルの挿入
+   
+
+  
+
+    // 行数取得
+//    var row_len = table.rows.length;
+
+    // セルの内容入力
+//    cell1.innerHTML = outarray[i];
+  //  cell2.innerHTML = button;
+
+
+}
+
+
+
+
 }else{alert("ローカルストレージにデータがありません！");}
+
+
+
+
+
+
+
+
+
+}
+
+window.onload=function(){
+
+var pflag = 0;
+var sflag = 0;
+
+// URL
+var param = location.search
+
+if(param == ""){
+pflag = 0;
+}else{
+pflag = 1;
+}
+
+if(localStorage.getItem('aryMemo') == null){
+		sflag = 0;
+	}else{
+		sflag = 1;
+	}
+
+// blockで表示
+// noneで非表示
+const p1 = document.getElementById("p1");
+
+	if(pflag == 0 && sflag == 0){
+console.log("hear");
+
+		p1.style.display ="block";
+	}else if(pflag == 1 && sflag == 0){
+console.log("hear2");
+		document.getElementById('p1').style.display = "none";
+
+
+
+
+// ?list="0101", "1101", "2101", "3101", "4101", "5101", "6101", "7101", "8101", "9101"&syoknm=003463
+
+
+var data ="[" +  getParam('list') + "]";
+var arr = JSON.parse(data);
+var nm = getParam('syoknm');
+// 配列をローカルストレージにいれる
+localStorage.setItem('aryMemo', JSON.stringify(arr));
+localStorage.setItem('syoknm', JSON.stringify(nm));
+
+console.log(localStorage.getItem('aryMemo'));
+console.log(localStorage.getItem('asyoknm'));
+
+console.log("よかったきたわ");
+
+
+
+
 
 // コンソールに表示
 console.log(outarray);
 
-// ローカルストレージのキーが"aryMemo"の配列を消す
-// localStorage.removeItem('aryMemo');
-
-// ローカルストレージからキーが"aryMemo"の配列があるのか確認
-if(localStorage.getItem('aryMemo') !== null){
-    outarray = JSON.parse( localStorage.getItem('aryMemo') );
-}else{alert("ローカルストレージにデータがありません！");}
 
 
 
@@ -468,38 +320,22 @@ if(localStorage.getItem('aryMemo') !== null){
 
 
 
-	for(var j = 1; j <= 12; j++) {
-		const selectMonth = document.getElementById('kikaku-month');
-		const option2 = document.createElement('option');
-		option2.value = j;
-		option2.textContent = j+"月";
-		selectMonth.appendChild(option2)
-	}
 
-	for(var i = 2000; i <= 2050; i++) {
-		const selectYear = document.getElementById('kikaku-year');
-		const option1 = document.createElement('option');
-		option1.value = i;
-		option1.textContent = i+"年";
-		selectYear.appendChild(option1)
-	}
 
-	for(var k = 1; k <= 12; k++) {
-		const selectMonth = document.getElementById('kikaku-month2');
-		const option2 = document.createElement('option');
-		option2.value = k;
-		option2.textContent = k+"月";
-		selectMonth.appendChild(option2)
-	}
+	}else{
+console.log("よかったきたわ2");
 
-	for(var l = 2000; l <= 2050; l++) {
-		const selectYear = document.getElementById('kikaku-year2');
-		const option1 = document.createElement('option');
-		option1.value = l;
-		option1.textContent = l+"年";
-		selectYear.appendChild(option1)
-	}
-	non();
+
+
+tableMake();
+
+
+
+
+		document.getElementById('p1').style.display = "none";
+}
+
+
 }
 
 function non(){
@@ -745,7 +581,7 @@ function reload() {
 	let timer;
 	const ua = navigator.userAgent.toLowerCase();
 	const isSP = /iphone|ipod|ipad|android/.test(ua);
-	const b = document.getElementById('sendFrom');
+	const b = document.getElementById('sendfrom');
 	const eventStart = isSP ? 'touchstart' : 'mousedown';
 	const eventEnd   = isSP ? 'touchend' : 'mouseup';
 	const eventLeave = isSP ? 'touchmove' : 'mouseleave';
