@@ -208,7 +208,7 @@ for(var i = 0; i < outarray.length;i++){
 
 
 // ボタン用 HTML
-var button = '<input type="button" id="sendfrom" value="変更">';
+var button = '<button type="button" class="btn btn-primary">変更</button>';
 // テーブル取得
 let table2 = document.getElementById('targetTable');
 let newRow = table2.insertRow();
@@ -219,25 +219,6 @@ newCell.appendChild(newText);
 
 newCell = newRow.insertCell();
 newCell.innerHTML = button;
-
-
-
-
-
-    // 行を行末に追加
-
-    // セルの挿入
-   
-
-  
-
-    // 行数取得
-//    var row_len = table.rows.length;
-
-    // セルの内容入力
-//    cell1.innerHTML = outarray[i];
-  //  cell2.innerHTML = button;
-
 
 }
 
