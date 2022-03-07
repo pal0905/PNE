@@ -279,15 +279,12 @@ height:20px
 
 			<div class="form-row">
 				<br><label class="col-sm-3 col-form-label">①数量：</label>
-				<div class="col-sm-9">
-					<p>
-						<select class="custom-select w-25" id="answer">
-							<option value="0">要</option>
-							<option value="1" selected>不要</option>
-						</select> <span><input type="text" class="nontext" disabled></span>
-					</p>
+				<div class="js-selectbox w-25col-sm-9">
+					
 				</div>
 			</div>
+
+
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">②理由：</label>
 				<div class="col-sm-9">
@@ -408,7 +405,27 @@ document.getElementById("area6").innerText = nen + "年" + tuki +"月" + kai + "
 
 
 
-	
+
+const animals = [
+  { value: 1, name: 'ゾウ'},
+  { value: 2, name: 'キリン'},
+  { value: 3, name: 'イルカ'},
+  { value: 4, name: 'ライオン'},
+]
+const jsSelectBox = document.querySelector('.js-selectbox');
+const selectWrap = document.createElement('div');
+selectWrap.classList.add('selectwrap');
+const select = document.createElement('select');
+select.classList.add('select');
+for (let i = 1; i <= intS; i++) {
+  const option = document.createElement('option');
+  option.value = i;
+  option.textContent = i;
+  select.appendChild(option);
+};
+selectWrap.appendChild(select);
+jsSelectBox.appendChild(selectWrap);
+select.selectedIndex = 0;	
 	
 }
 
