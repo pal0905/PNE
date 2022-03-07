@@ -237,6 +237,41 @@ height:20px
     background-color: rgba(55 190 176 / 25%);
     width: 100%;
 }
+.selectwrap {
+  position: relative;
+  width: 150px;
+  margin: 20px;
+}
+.selectwrap::after {
+  position: absolute;
+  top: 30%; /* 矢印の位置 */
+  right: 15px; /* 矢印の位置 */
+  width: 10px; /* 矢印の大きさ */
+  height: 10px; /* 矢印の大きさ */
+  border-top: 3px solid #58504A; /* 矢印の線 */
+  border-right: 3px solid #58504A; /* 矢印の線 */
+  -webkit-transform: rotate(135deg); /* 矢印の傾き */
+  transform: rotate(135deg); /* 矢印の傾き */
+  pointer-events: none; /* 矢印部分もクリック可能にする */
+  content: ""; 
+  }
+.select {
+  appearance: none; /* デフォルトの矢印を消す */
+  width: 150px; /* セレクトボックスの幅 */
+  height: 45px; /* セレクトボックスの高さ */
+  background-color: white;  /* セレクトボックスの背景色 */
+  border-radius: 2px;  /* セレクトボックスの四隅の丸み */
+  color: #58504A;  /* セレクトボックスの文字色 */
+  padding: 10px; /* セレクトボックスの内側の余白 */
+border-color:#dcdcdc;
+  cursor: pointer;
+}
+select:focus {
+  outline: none; /* focus 時のデフォルトの枠線を消す */
+}
+::-ms-expand {
+  display: none;  /* IE 対応( select のデフォルト矢印を消す) */
+}
 </style>
 </head>
 <body>
