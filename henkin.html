@@ -386,20 +386,22 @@ var KK = getParam('kikaku').replaceAll('\"','');
 var nen = KK.slice(0, 4);
 var tuki = Number(KK.slice(4, 6));
 var kai = KK.slice(6, 7);
-var result = 0;
+var result = Number(0);
 
 document.getElementById("area1").innerText = S;
 document.getElementById("area2").innerText = K;
 document.getElementById("area3").innerText = C;
 document.getElementById("area4").innerText = SN;
 var intS = Number(S);
-
 if(intS > 1){result = Number(KG) / intS;
 	if(result > 0){
 		document.getElementById("area5").innerText = KG + "円" + " " +"(単価：" + result + "円)";
 	}else{
+
 		document.getElementById("area5").innerText = KG + "円";
 	}
+}else{
+	document.getElementById("area5").innerText = KG + "円";
 }
 
 
