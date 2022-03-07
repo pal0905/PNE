@@ -276,6 +276,8 @@ height:20px
   <label class="form-check-label" for="inlineRadio2">欠品返金</label>
 </div>
 <span><input type="button" class="btn btn-info"	value="リセット" onclick="reload()"></span>
+<input type="text" class="nontext" disabled>
+
 			<div class="form-row">
 				<br><label class="col-sm-3 col-form-label">①数量：</label>
 				<div class="col-sm-9">
@@ -374,29 +376,36 @@ window.onload=function(){
 
 // URLパラメータ文字列を取得する
 var param = location.search
-var S = getParam('suryo');
-var K = getParam('kname');
-var C = getParam('cyumoncd');
-var SN = getParam('syohinnm');
-var KG = getParam('kingaku');
+var S = getParam('suryo').replaceAll('\"','');
+var K = getParam('kname').replaceAll('\"','');
+var C = getParam('cyumoncd').replaceAll('\"','');
+var SN = getParam('syohinnm').replaceAll('\"','');
+var KG = getParam('kingaku').replaceAll('\"','');
 var KK = getParam('kikaku').replaceAll('\"','');
 
 var nen = KK.slice(0, 4);
 var tuki = Number(KK.slice(4, 6));
 var kai = KK.slice(6, 7);
+var result = 0;
 
-console.log(KK)
-console.log(nen);
-console.log(tuki);
-console.log(kai);
+document.getElementById("area1").innerText = S;
+document.getElementById("area2").innerText = K;
+document.getElementById("area3").innerText = C;
+document.getElementById("area4").innerText = SN;
+var intS = Number(S);
+
+if(intS > 1){result = Number(KG) / intS;
+	if(result > 0){
+		document.getElementById("area5").innerText = KG + "円" + " " +"(単価：" + result + "円)";
+	}else{
+		document.getElementById("area5").innerText = KG + "円";
+	}
+}
 
 
-document.getElementById("area1").innerText = S.replaceAll('\"','');
-document.getElementById("area2").innerText = K.replaceAll('\"','');
-document.getElementById("area3").innerText = C.replaceAll('\"','');
-document.getElementById("area4").innerText = SN.replaceAll('\"','');
-document.getElementById("area5").innerText = KG.replaceAll('\"','')+"円";
 document.getElementById("area6").innerText = nen + "年" + tuki +"月" + kai + "回";
+
+
 
 	
 	
