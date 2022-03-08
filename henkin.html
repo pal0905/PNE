@@ -315,7 +315,7 @@ dl.henkinsyu dd input[type="radio"] {
 				<br><label class="col-sm-3 col-form-label">①数量：</label>
 				<div class="col-sm-9">
 					<p>
-						<select class="custom-select w-25" id="suu"></select>
+						<select class="custom-select w-25" id="suu" name="suu"></select>
 					</p>
 				</div>
 			</div>
@@ -356,7 +356,7 @@ dl.henkinsyu dd input[type="radio"] {
 				<label class="col-sm-3 col-form-label">①返金金額：</label>
 				<div class="col-sm-9">
 					<p style="display:inline-flex">
-					  <input type="number" id="kingaku" class="form-control" placeholder="金額"><span><input type="button" class="btn" value="円" readonly></span>
+					  <input type="number" id="kingaku" name="kingaku" class="form-control" placeholder="金額"><span><input type="button" class="btn" value="円" readonly></span>
 						<span><input type="text" class="nontext w-25" disabled></span>
 						<span><input type="button" class="btn btn-info" value="リセット" onclick="reload()"></span>
 					</p>
@@ -366,7 +366,7 @@ dl.henkinsyu dd input[type="radio"] {
 				<label class="col-sm-3 col-form-label">②理由：</label>
 				<div class="col-sm-9">
 					<p>
-						<select class="custom-select w-75" id="riyu2" name="branch">
+						<select class="custom-select w-75" id="riyu2" name="riyu2">
 							<option value="03">傷み・カビ・腐り・熟しすぎ</option>
 							<option value="44">★農産:食味不良（酸っぱい・味がないなど）</option>
 							<option value="04">青い・硬い・未熟</option>
@@ -533,16 +533,19 @@ function reload() {
 		}
 		if(second > 0.0 && second < 0.6){
 			if(radioValue === '1'){
+				// 部分返金
 				var result = window.confirm("メールを作成しても宜しいですか？");
 							if( result ) {
-								var elements = document.getElementsByName('corres');
-								var len = elements.length;
-								var checkValue = '';
-									for (let i = 0; i < len; i++){
-										if (elements.item(i).checked){
-											checkValue = elements.item(i).value;
-										}
-									}
+
+
+								const num4 = kingaku.selectedIndex;
+								const str4 = document.area.kingaku.options[num].value;
+								const num5 = riyu2.selectedIndex;
+								const str5 = document.area.riyu2.options[num].value;
+
+								console.log("str4"+str4);
+								console.log("str5"+str5);
+
 								txtData = document.area;
 								answer = txtData[0].value;
 								branch = txtData[3].value;
@@ -556,7 +559,7 @@ function reload() {
 												instime = '';
 												delfox = "0";
 								address = 'kumikoeTest@palcoop.or.jp';
-								subject = '地域の声';
+								subject = '部分返金';
 								body = '{"body":{"answer":"'+answer+
 										'","branch":"'+branch+
 										'","kmcode":"'+kmcode+
@@ -574,26 +577,46 @@ function reload() {
 							} else {
 							}
 			}else{
+			// 数量返金返金
 			var result = window.confirm("メールを作成しても宜しいですか？");
 				if( result ) {
-					var toDoubleDigits = function(num) {
-					  num += "";
-					  if (num.length === 1) {
-					    num = "0" + num;
-					  }
-					 return num;
-					};
+
+let val = document.getElementsByName('refund');
+let len = val.length;
+let flagVal = '';
+
+for (let i = 0; i < len; i++){
+    if (val.item(i).checked){
+        flagVal = val.item(i).value;
+    }
+}
+					
+					const num1 = suu.selectedIndex;
+					const str1 = document.content.suu.options[num1].value;
+
+					console.log("flagVal"+flagVal);
+					console.log("str1"+str1);
+
+					if(flagVal == "qu"){
+						const num2 = sriyu.selectedIndex;
+						const str2 = document.content.sriyu.options[num].value;
+						console.log("str2"+str2);
+					}else{
+						const num3 = skeppin.selectedIndex;
+						const str3 = document.content.skeppin.options[num].value;
+						console.log("str3"+str3);
+					}
+
+
+
+
+
+
 					var elements = document.getElementsByName('corres');
 					var time1 =  document.getElementById('kikaku-year').value;
 					var time2 =  toDoubleDigits(document.getElementById('kikaku-month').value);
 					var time3 = document.getElementById('kai').value;
-					var len = elements.length;
-					var checkValue = '';
-						for (let i = 0; i < len; i++){
-							if (elements.item(i).checked){
-								checkValue = elements.item(i).value;
-							}
-						}
+					
 					txtData = document.content;
 					answer = txtData[0].value;
 					branch = txtData[3].value;
@@ -607,7 +630,7 @@ function reload() {
 					instime = '';
 					delfox = "0";
 					address = 'kumikoeTest@palcoop.or.jp';
-					subject = '組合員の声';
+					subject = '数量返金';
 					body = '{"body":{"answer":"'+answer+
 							'","branch":"'+branch+
 							'","kmcode":"'+kmcode+
