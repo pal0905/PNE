@@ -10,7 +10,7 @@
 	rel="stylesheet"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-<link rel="apple-touch-icon" href="https://pal0905.github.io/PNE/TH.ico" sizes="180x180">
+<link rel="apple-touch-icon" href="https://kasi-pro.github.io/kumi/favicon.ico" sizes="180x180">
 <style>
 body {
 	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
@@ -237,31 +237,51 @@ height:20px
     background-color: rgba(55 190 176 / 25%);
     width: 100%;
 }
-.selectwrap {
-  position: relative;
-  width: 150px;
-  margin: 20px;
+input[type=radio] {
+display: none; /* ラジオボタンを非表示にする */
 }
-.selectwrap::after {
-  position: absolute;
-  content: ""; 
-  }
-.select {
-  width: 150px; /* セレクトボックスの幅 */
-  height: 45px; /* セレクトボックスの高さ */
-  background-color: white;  /* セレクトボックスの背景色 */
-  border-radius: 2px;  /* セレクトボックスの四隅の丸み */
-  color: #58504A;  /* セレクトボックスの文字色 */
-  padding: 10px; /* セレクトボックスの内側の余白 */
-border-color:#dcdcdc;
-  cursor: pointer;
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  
 }
-select:focus {
-  outline: none; /* focus 時のデフォルトの枠線を消す */
+
+p {
+  margin: 0 0 1.6rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid #ddd;
 }
-::-ms-expand {
-  display: none;  /* IE 対応( select のデフォルト矢印を消す) */
+
+.radio-inline__input {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
 }
+
+.radio-inline__label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 18px;
+    border-radius: 3px;
+    transition: all .2s;
+}
+
+.radio-inline__input:checked + .radio-inline__label {
+    background: #B54A4A;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0,0,0,.7);
+}
+
+.radio-inline__input:focus + .radio-inline__label {
+    outline-color: #4D90FE;
+    outline-offset: -2px;
+    outline-style: auto;
+    outline-width: 5px;
+}
+
 </style>
 </head>
 <body>
@@ -290,26 +310,37 @@ select:focus {
 
 
 
+
+
 <form id="content" name="content">
 
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-  <label class="form-check-label" for="inlineRadio1">数量返金</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-  <label class="form-check-label" for="inlineRadio2">欠品返金</label>
-</div>
+
+<fieldset>
+  <input id="item-1" class="radio-inline__input" type="radio" name="accessible-radio" value="item-1" checked="checked"/>
+  <label class="radio-inline__label" for="item-1">
+      数量返金
+  </label>
+  <input id="item-2" class="radio-inline__input" type="radio" name="accessible-radio" value="item-2"/>
+  <label class="radio-inline__label" for="item-2">
+      欠品返金
+  </label>
 <span><input type="button" class="btn btn-info"	value="リセット" onclick="reload()"></span>
+</fieldset>
+
+
+
+
 
 			<div class="form-row">
 				<br><label class="col-sm-3 col-form-label">①数量：</label>
-				<div class="js-selectbox w-25col-sm-9">
-					
+				<div class="col-sm-9">
+					<p>
+						<select class="custom-select w-25" id="suu">
+							
+						</select> <span><input type="text" class="nontext" disabled></span>
+					</p>
 				</div>
 			</div>
-
-
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">②理由：</label>
 				<div class="col-sm-9">
@@ -403,54 +434,55 @@ var C = getParam('cyumoncd').replaceAll('\"','');
 var SN = getParam('syohinnm').replaceAll('\"','');
 var KG = getParam('kingaku').replaceAll('\"','');
 var KK = getParam('kikaku').replaceAll('\"','');
-
+// 企画回分割
 var nen = KK.slice(0, 4);
 var tuki = Number(KK.slice(4, 6));
 var kai = KK.slice(6, 7);
+// 単価判定
 var result = Number(0);
+var intS = Number(S);
 
 document.getElementById("area1").innerText = S;
 document.getElementById("area2").innerText = K;
 document.getElementById("area3").innerText = C;
 document.getElementById("area4").innerText = SN;
-var intS = Number(S);
 if(intS > 1){result = Number(KG) / intS;
 	if(result > 0){
 		document.getElementById("area5").innerText = KG + "円" + " " +"(単価：" + result + "円)";
 	}else{
-
 		document.getElementById("area5").innerText = KG + "円";
 	}
 }else{
 	document.getElementById("area5").innerText = KG + "円";
 }
-
-
 document.getElementById("area6").innerText = nen + "年" + tuki +"月" + kai + "回";
 
+if(intS > 1){
+var count=0;
+for(let v = 0;v<intS;v++){
+
+//select要素を取得する
+const selectSu = document.getElementById('suu');
+
+//option要素を新しく作る
+const option1 = document.createElement('option');
+
+//option要素にvalueと表示名を設定
+option1.value = count;
+option1.textContent = count;
+
+//select要素にoption要素を追加する
+selectSu.appendChild(option1)
+count += 1;
+}
 
 
 
-const animals = [
-  { value: 1, name: 'ゾウ'},
-  { value: 2, name: 'キリン'},
-  { value: 3, name: 'イルカ'},
-  { value: 4, name: 'ライオン'},
-]
-const jsSelectBox = document.querySelector('.js-selectbox');
-const selectWrap = document.createElement('div');
-selectWrap.classList.add('selectwrap');
-const select = document.createElement('select');
-select.classList.add('select');
-for (let i = 1; i <= intS; i++) {
-  const option = document.createElement('option');
-  option.value = i;
-  option.textContent = i;
-  select.appendChild(option);
-};
-selectWrap.appendChild(select);
-jsSelectBox.appendChild(selectWrap);
-select.selectedIndex = 0;	
+}else{
+
+}
+
+	
 	
 }
 
