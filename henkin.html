@@ -306,8 +306,8 @@ dl.henkinsyu dd input[type="radio"] {
 <dl class="henkinsyu">
 <dd>
 	<ul>
-	<li><input type="radio" name="refund" id="quantity" /><label for="quantity">数量返金</label></li>
-	<li><input type="radio" name="refund" id="shortage" /><label for="shortage">欠品返金</label></li>
+	<li><input type="radio" name="refund" id="quantity" value="qu" checked/><label for="quantity">数量返金</label></li>
+	<li><input type="radio" name="refund" id="shortage" value="sh"/><label for="shortage">欠品返金</label></li>
 	</ul>
 </dd>
 </dl>
@@ -330,9 +330,9 @@ dl.henkinsyu dd input[type="radio"] {
 			</div>
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">②理由：</label>
-				<div class="col-sm-9">
+				<div class="col-sm-9" id="riyu">
 					<p>
-						<select class="custom-select w-75" id="riyu" name="branch"s>
+						<select class="custom-select w-75" id="sriyu" name="sriyu">
 							<option value="03">傷み・カビ・腐り・熟しすぎ</option>
 							<option value="44">★農産:食味不良（酸っぱい・味がないなど）</option>
 							<option value="04">青い・硬い・未熟</option>
@@ -346,6 +346,13 @@ dl.henkinsyu dd input[type="radio"] {
 							<option value="14">チラシの表示と実物が違う</option>
 							<option value="16">その他の不良品返品</option>
 							<option value="17">遅配</option>
+						</select>
+					</p></div>
+<div class="col-sm-9" id="keppin">
+						<p><select class="custom-select w-75" id="skeppin" name="skeppin">
+							<option value="40">他に違う商品が入っていた</option>
+							<option value="41">数量間違い（入っていなかった）</option>
+							<option value="42">その他・不明</option>
 						</select>
 					</p>
 				</div>
@@ -389,6 +396,29 @@ dl.henkinsyu dd input[type="radio"] {
 	</div>
 </body>
 <script>
+
+let radio_btns = document.querySelectorAll(`input[type='radio'][name='refund']`);
+
+document.getElementById("keppin").style.display ="none";
+
+for (let target of radio_btns) {
+	target.addEventListener(`change`, function () {
+const riyu = document.getElementById("riyu");
+
+	if(target.value=="qu"){
+		// noneで非表示
+		keppin.style.display ="none";
+riyu.style.display ="block";
+	}else{
+		// blockで表示
+keppin.style.display ="block";
+		riyu.style.display ="none";
+	}
+	});
+}
+
+
+
 function formSwitch(newColor) {
         decided = document.getElementsByName('corres')
         if (decided[0].checked) {
