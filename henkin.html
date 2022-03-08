@@ -322,9 +322,7 @@ dl.henkinsyu dd input[type="radio"] {
 				<br><label class="col-sm-3 col-form-label">①数量：</label>
 				<div class="col-sm-9">
 					<p>
-						<select class="custom-select w-25" id="suu">
-							
-						</select> <span><input type="text" class="nontext" disabled></span>
+						<select class="custom-select w-25" id="suu"></select>
 					</p>
 				</div>
 			</div>
@@ -347,9 +345,11 @@ dl.henkinsyu dd input[type="radio"] {
 							<option value="16">その他の不良品返品</option>
 							<option value="17">遅配</option>
 						</select>
-					</p></div>
-<div class="col-sm-9" id="keppin">
-						<p><select class="custom-select w-75" id="skeppin" name="skeppin">
+					</p>
+				</div>
+				<div class="col-sm-9" id="keppin">
+					<p>
+						<select class="custom-select w-75" id="skeppin" name="skeppin">
 							<option value="40">他に違う商品が入っていた</option>
 							<option value="41">数量間違い（入っていなかった）</option>
 							<option value="42">その他・不明</option>
@@ -398,26 +398,21 @@ dl.henkinsyu dd input[type="radio"] {
 <script>
 
 let radio_btns = document.querySelectorAll(`input[type='radio'][name='refund']`);
-
 document.getElementById("keppin").style.display ="none";
-
 for (let target of radio_btns) {
 	target.addEventListener(`change`, function () {
-const riyu = document.getElementById("riyu");
-
-	if(target.value=="qu"){
-		// noneで非表示
-		keppin.style.display ="none";
-riyu.style.display ="block";
-	}else{
-		// blockで表示
-keppin.style.display ="block";
-		riyu.style.display ="none";
-	}
+		const riyu = document.getElementById("riyu");
+		if(target.value=="qu"){
+			// noneで非表示
+			keppin.style.display ="none";
+			riyu.style.display ="block";
+		}else{
+			// blockで表示
+			keppin.style.display ="block";
+			riyu.style.display ="none";
+		}
 	});
 }
-
-
 
 function formSwitch(newColor) {
         decided = document.getElementsByName('corres')
@@ -475,7 +470,7 @@ if(intS > 1){result = Number(KG) / intS;
 document.getElementById("area6").innerText = nen + "年" + tuki +"月" + kai + "回";
 
 if(intS > 1){
-var count=0;
+var count=1;
 for(let v = 0;v<intS;v++){
 
 //select要素を取得する
