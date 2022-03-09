@@ -429,12 +429,12 @@ function formSwitch(newColor) {
 window.onload=function(){
 	// URLパラメータ文字列を取得する
 	var param = location.search
-	var S = getParam('suryo').replaceAll('\"','');
-	var K = getParam('kname').replaceAll('\"','');
-	var C = getParam('cyumoncd').replaceAll('\"','');
-	var SN = getParam('syohinnm').replaceAll('\"','');
-	var KG = getParam('kingaku').replaceAll('\"','');
-	var KK = getParam('kikaku').replaceAll('\"','');
+	var S = getParam('suryo').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var K = getParam('kname').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var C = getParam('cyumoncd').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var SN = getParam('syohinnm').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var KG = getParam('kingaku').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var KK = getParam('kikaku').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
 	// 企画回分割
 	var nen = KK.slice(0, 4);
 	var tuki = Number(KK.slice(4, 6));
@@ -546,9 +546,10 @@ function reload() {
 								var cyumon = getParam('cyumoncd').replaceAll('\"','');
 								var kikaku = getParam('kikaku').replaceAll('\"','');
 								var kumcd = getParam('kumcd').replaceAll('\"','');
-								var str4 = document.area.kingaku.value;
-								var num5 = riyu2.selectedIndex;
-								var str5 = document.area.riyu2.options[num5].value;
+
+								const str4 = document.area.kingaku.value;
+								const num5 = riyu2.selectedIndex;
+								const str5 = document.area.riyu2.options[num5].value;
 								address = 'kumikoeTest@palcoop.or.jp';
 								subject = '部分返金';
 								body = '{"body":{"kmcode":"'+kumcd+
@@ -579,10 +580,10 @@ function reload() {
 						var cyumon = getParam('cyumoncd').replaceAll('\"','');
 						var kikaku = getParam('kikaku').replaceAll('\"','');
 						var kumcd = getParam('kumcd').replaceAll('\"','');
-						var num1 = suu.selectedIndex;
-						var str1 = document.content.suu.options[num1].value;
-						var num2 = sriyu.selectedIndex;
-						var str2 = document.content.sriyu.options[num2].value;
+						const num1 = suu.selectedIndex;
+						const str1 = document.content.suu.options[num1].value;
+						const num2 = sriyu.selectedIndex;
+						const str2 = document.content.sriyu.options[num2].value;
 						address = 'kumikoeTest@palcoop.or.jp';
 						subject = '数量返金';
 						body = '{"body":{"kmcode":"'+kumcd+
@@ -597,10 +598,10 @@ function reload() {
 						var cyumon = getParam('cyumoncd').replaceAll('\"','');
 						var kikaku = getParam('kikaku').replaceAll('\"','');
 						var kumcd = getParam('kumcd').replaceAll('\"','');
-						var num1 = suu.selectedIndex;
-						var str1 = document.content.suu.options[num1].value;
-						var num3 = skeppin.selectedIndex;
-						var str2 = document.content.skeppin.options[num3].value;
+						const num1 = suu.selectedIndex;
+						const str1 = document.content.suu.options[num1].value;
+							const num3 = skeppin.selectedIndex;
+							const str2 = document.content.skeppin.options[num3].value;
 						address = 'kumikoeTest@palcoop.or.jp';
 						subject = '数量返金';
 						body = '{"body":{"kmcode":"'+kumcd+
