@@ -432,7 +432,7 @@ window.onload=function(){
 	var S = getParam('suryo').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
 	var K = getParam('kname').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
 	var C = getParam('cyumoncd').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
-	var SN = getParam('syohinnm').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var SN = getParam('syohinnm').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"").substr( 0, 10 );
 	var KG = getParam('kingaku').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
 	var KK = getParam('kikaku').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
 	// 企画回分割
