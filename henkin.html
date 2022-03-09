@@ -534,117 +534,85 @@ function reload() {
 		if(second > 0.0 && second < 0.6){
 			if(radioValue === '1'){
 				// 部分返金
+				var claim = Number(getParam('kingaku').replaceAll('\"',''));
+				var setkingaku = document.area.kingaku.value;
+				if(claim < setkingaku){
+					alert("請求金額を越えて設定しています。");
+				}else if(setkingaku.length == 0){
+					alert("金額が入力されていません。");
+				}else{
 				var result = window.confirm("メールを作成しても宜しいですか？");
 							if( result ) {
+								var cyumon = getParam('cyumoncd').replaceAll('\"','');
+								var kikaku = getParam('kikaku').replaceAll('\"','');
+								var kumcd = getParam('kumcd').replaceAll('\"','');
 
-
-								const num4 = kingaku.selectedIndex;
-								const str4 = document.area.kingaku.options[num].value;
+								const str4 = document.area.kingaku.value;
 								const num5 = riyu2.selectedIndex;
-								const str5 = document.area.riyu2.options[num].value;
-
-								console.log("str4"+str4);
-								console.log("str5"+str5);
-
-								txtData = document.area;
-								answer = txtData[0].value;
-								branch = txtData[3].value;
-								kmcode = txtData[4].value;
-								pname = txtData[5].value.replace(regex, '').replace(/\W/g, function(m){return m.match(/[!-~]|\s/) ? "" : m});
-								offer = txtData[6].value.replace(regex, '').replace(/\W/g, function(m){return m.match(/[!-~]|\s/) ? "" : m});
-								comment = txtData[7].value.replace(regex, '').replace(/\W/g, function(m){return m.match(/[!-~]|\s/) ? "" : m});
-												kikakai = '';
-												pcode = '';
-												insday = '';
-												instime = '';
-												delfox = "0";
+								const str5 = document.area.riyu2.options[num5].value;
 								address = 'kumikoeTest@palcoop.or.jp';
 								subject = '部分返金';
-								body = '{"body":{"answer":"'+answer+
-										'","branch":"'+branch+
-										'","kmcode":"'+kmcode+
-										'","corres":"'+checkValue+
-										'","pname":"'+pname+
-										'","offer":"'+offer+
-										'","comment":"'+comment+
-										'","kikakai":"'+kikakai+
-										'","pcode":"'+pcode+
-										'","insday":"'+insday+
-										'","instime":"'+instime+
-										'","delfox":"'+delfox+
-											'"}}';
+								body = '{"body":{"kmcode":"'+kumcd+
+								'","kikakai":"'+kikaku+
+								'","pcode":"'+cyumon+
+								'","quantity":"'+''+
+								'","kingaku":"'+str4+
+								'","riyucd":"'+str5+
+								'"}}';
 								location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
 							} else {
 							}
+				}
 			}else{
 			// 数量返金返金
 			var result = window.confirm("メールを作成しても宜しいですか？");
 				if( result ) {
+					let val = document.getElementsByName('refund');
+					let len = val.length;
+					let flagVal = '';
 
-let val = document.getElementsByName('refund');
-let len = val.length;
-let flagVal = '';
-
-for (let i = 0; i < len; i++){
-    if (val.item(i).checked){
-        flagVal = val.item(i).value;
-    }
-}
-					
-					const num1 = suu.selectedIndex;
-					const str1 = document.content.suu.options[num1].value;
-
-					console.log("flagVal"+flagVal);
-					console.log("str1"+str1);
-
-					if(flagVal == "qu"){
-						const num2 = sriyu.selectedIndex;
-						const str2 = document.content.sriyu.options[num].value;
-						console.log("str2"+str2);
-					}else{
-						const num3 = skeppin.selectedIndex;
-						const str3 = document.content.skeppin.options[num].value;
-						console.log("str3"+str3);
+					for (let i = 0; i < len; i++){
+					    if (val.item(i).checked){
+					        flagVal = val.item(i).value;
+					    }
 					}
-
-
-
-
-
-
-					var elements = document.getElementsByName('corres');
-					var time1 =  document.getElementById('kikaku-year').value;
-					var time2 =  toDoubleDigits(document.getElementById('kikaku-month').value);
-					var time3 = document.getElementById('kai').value;
-					
-					txtData = document.content;
-					answer = txtData[0].value;
-					branch = txtData[3].value;
-					kmcode = txtData[4].value;
-					kikakai = time1+time2+time3;
-					pcode = txtData[11].value;
-					pname = txtData[12].value.replace(regex, '').replace(/\W/g, function(m){return m.match(/[!-~]|\s/) ? "" : m});
-					offer = txtData[13].value.replace(regex, '').replace(/\W/g, function(m){return m.match(/[!-~]|\s/) ? "" : m});
-					comment = txtData[14].value.replace(regex, '').replace(/\W/g, function(m){return m.match(/[!-~]|\s/) ? "" : m});
-					insday = '';
-					instime = '';
-					delfox = "0";
-					address = 'kumikoeTest@palcoop.or.jp';
-					subject = '数量返金';
-					body = '{"body":{"answer":"'+answer+
-							'","branch":"'+branch+
-							'","kmcode":"'+kmcode+
-							'","corres":"'+checkValue+
-							'","kikakai":"'+kikakai+
-							'","pcode":"'+pcode+
-							'","pname":"'+pname+
-							'","offer":"'+offer+
-							'","comment":"'+comment+
-							'","insday":"'+insday+
-							'","instime":"'+instime+
-							'","delfox":"'+delfox+
-							'"}}';
-				location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
+					if(flagVal == "qu"){
+						var cyumon = getParam('cyumoncd').replaceAll('\"','');
+						var kikaku = getParam('kikaku').replaceAll('\"','');
+						var kumcd = getParam('kumcd').replaceAll('\"','');
+						const num1 = suu.selectedIndex;
+						const str1 = document.content.suu.options[num1].value;
+						const num2 = sriyu.selectedIndex;
+						const str2 = document.content.sriyu.options[num2].value;
+						address = 'kumikoeTest@palcoop.or.jp';
+						subject = '数量返金';
+						body = '{"body":{"kmcode":"'+kumcd+
+								'","kikakai":"'+kikaku+
+								'","pcode":"'+cyumon+
+								'","quantity":"'+str1+
+								'","kingaku":"'+''+
+								'","riyucd":"'+str2+
+								'"}}';
+						location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
+					}else{
+						var cyumon = getParam('cyumoncd').replaceAll('\"','');
+						var kikaku = getParam('kikaku').replaceAll('\"','');
+						var kumcd = getParam('kumcd').replaceAll('\"','');
+						const num1 = suu.selectedIndex;
+						const str1 = document.content.suu.options[num1].value;
+							const num3 = skeppin.selectedIndex;
+							const str2 = document.content.skeppin.options[num3].value;
+						address = 'kumikoeTest@palcoop.or.jp';
+						subject = '数量返金';
+						body = '{"body":{"kmcode":"'+kumcd+
+								'","kikakai":"'+kikaku+
+								'","pcode":"'+cyumon+
+								'","quantity":"'+str1+
+								'","kingaku":"'+''+
+								'","riyucd":"'+str2+
+								'"}}';
+						location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
+					}
 				} else {
 				}
 			}
