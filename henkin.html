@@ -546,10 +546,9 @@ function reload() {
 								var cyumon = getParam('cyumoncd').replaceAll('\"','');
 								var kikaku = getParam('kikaku').replaceAll('\"','');
 								var kumcd = getParam('kumcd').replaceAll('\"','');
-
-								const str4 = document.area.kingaku.value;
-								const num5 = riyu2.selectedIndex;
-								const str5 = document.area.riyu2.options[num5].value;
+								var str4 = document.area.kingaku.value;
+								var num5 = riyu2.selectedIndex;
+								var str5 = document.area.riyu2.options[num5].value;
 								address = 'kumikoeTest@palcoop.or.jp';
 								subject = '部分返金';
 								body = '{"body":{"kmcode":"'+kumcd+
@@ -580,10 +579,10 @@ function reload() {
 						var cyumon = getParam('cyumoncd').replaceAll('\"','');
 						var kikaku = getParam('kikaku').replaceAll('\"','');
 						var kumcd = getParam('kumcd').replaceAll('\"','');
-						const num1 = suu.selectedIndex;
-						const str1 = document.content.suu.options[num1].value;
-						const num2 = sriyu.selectedIndex;
-						const str2 = document.content.sriyu.options[num2].value;
+						var num1 = suu.selectedIndex;
+						var str1 = document.content.suu.options[num1].value;
+						var num2 = sriyu.selectedIndex;
+						var str2 = document.content.sriyu.options[num2].value;
 						address = 'kumikoeTest@palcoop.or.jp';
 						subject = '数量返金';
 						body = '{"body":{"kmcode":"'+kumcd+
@@ -598,10 +597,10 @@ function reload() {
 						var cyumon = getParam('cyumoncd').replaceAll('\"','');
 						var kikaku = getParam('kikaku').replaceAll('\"','');
 						var kumcd = getParam('kumcd').replaceAll('\"','');
-						const num1 = suu.selectedIndex;
-						const str1 = document.content.suu.options[num1].value;
-							const num3 = skeppin.selectedIndex;
-							const str2 = document.content.skeppin.options[num3].value;
+						var num1 = suu.selectedIndex;
+						var str1 = document.content.suu.options[num1].value;
+						var num3 = skeppin.selectedIndex;
+						var str2 = document.content.skeppin.options[num3].value;
 						address = 'kumikoeTest@palcoop.or.jp';
 						subject = '数量返金';
 						body = '{"body":{"kmcode":"'+kumcd+
