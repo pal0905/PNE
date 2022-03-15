@@ -314,6 +314,15 @@ height:20px
 					</p>
 				</div>
 			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">④あいまい検索：</label>
+				<div class="col-sm-9">
+					<p>
+						<input type="text" id="pname" class="form-control w-50"	placeholder="商品名">
+					</p>
+				</div>
+				<label class="h6">※商品名の一部から調べる事ができます。</label>
+			</div>
 		</form>
 		<input type="button" id="sendFrom" value="メール作成"><br> <br>
 	</div>
@@ -642,10 +651,10 @@ function reload() {
 									  }
 									 return num;
 									};
-								let str11= document.getElementById("kikaku-year").value; // 年
-								let str12= toDoubleDigits(document.getElementById('kikaku-month').value); // 月
-								let str13= document.getElementById("kai").value; // 回
-								let kikanm = str11+str12+str13;
+									let str1= document.getElementById("kikaku-year").value; // 年
+								let str1= toDoubleDigits(document.getElementById('kikaku-month').value); // 月
+								let str1= document.getElementById("kai").value; // 回
+								let kikanm = str1+str2+str3;
 						if(kikanm.length === 0 || kikanm.length === 7){
 									var result = window.confirm("メールを作成しても宜しいですか？");
 										if( result ) {
@@ -663,37 +672,36 @@ function reload() {
 											var time4 =  document.getElementById('kikaku-year2').value;
 											var time5 =  toDoubleDigits(document.getElementById('kikaku-month2').value);
 											var time6 = document.getElementById('kai2').value;
+											var pname = document.getElementById('pname').value;
 											var cyumon = document.getElementById('pcode').value;
 											kmcode = kumcd;
 											kikakai = time1+time2+time3;
 											kikakai2 = time4+time5+time6;
 											pcode = cyumon;
-											insday = '';
-											instime = '';
-											delfox = "0";
-											address = 'henkin@palcoop.or.jp';
+											address = 'henkin@ml.palcoop.or.jp';
 											subject = '伝レス-返金';
 											body = '{"body":{"kmcode":"'+kmcode+
 													'","kikakai":"'+kikakai+
 													'","kikakai2":"'+kikakai2+
 													'","pcode":"'+pcode+
+													'","pname":"'+pname+
 													'"}}';
 											location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
 										} else {
 										}
 								}else{
 									var emsg;
-									if(str11.length === 0 && str12.length !== 0 && str13.length !== 0){
+									if(str1.length === 0 && str2.length !== 0 && str3.length !== 0){
 										emsg = "年の";
-									}else if(str11.length !== 0 && str12.length === 0 && str13.length !== 0){
+									}else if(str1.length !== 0 && str2.length === 0 && str3.length !== 0){
 										emsg = "月の";
-									}else if(str11.length !== 0 && str12.length !== 0 && str13.length === 0){
+									}else if(str1.length !== 0 && str2.length !== 0 && str3.length === 0){
 										emsg = "回の";
-									}else if(str11.length === 0 && str12.length === 0 && str13.length !== 0){
+									}else if(str1.length === 0 && str2.length === 0 && str3.length !== 0){
 										emsg = "年と月の";
-									}else if(str11.length !== 0 && str12.length === 0 && str13.length === 0){
+									}else if(str1.length !== 0 && str2.length === 0 && str3.length === 0){
 										emsg = "月と回の";
-									}else if(str11.length === 0 && str12.length !== 0 && str13.length === 0){
+									}else if(str1.length === 0 && str2.length !== 0 && str3.length === 0){
 										emsg = "年と回の";
 									}
 									alert("企画回の"+emsg+"欄が選択されていません。");
