@@ -651,10 +651,10 @@ function reload() {
 									  }
 									 return num;
 									};
-									let str1= document.getElementById("kikaku-year").value; // 年
-								let str1= toDoubleDigits(document.getElementById('kikaku-month').value); // 月
-								let str1= document.getElementById("kai").value; // 回
-								let kikanm = str1+str2+str3;
+								let str11= document.getElementById("kikaku-year").value; // 年
+								let str12= toDoubleDigits(document.getElementById('kikaku-month').value); // 月
+								let str13= document.getElementById("kai").value; // 回
+								let kikanm = str11+str12+str13;
 						if(kikanm.length === 0 || kikanm.length === 7){
 									var result = window.confirm("メールを作成しても宜しいですか？");
 										if( result ) {
@@ -691,17 +691,17 @@ function reload() {
 										}
 								}else{
 									var emsg;
-									if(str1.length === 0 && str2.length !== 0 && str3.length !== 0){
+									if(str11.length === 0 && str12.length !== 0 && str13.length !== 0){
 										emsg = "年の";
-									}else if(str1.length !== 0 && str2.length === 0 && str3.length !== 0){
+									}else if(str11.length !== 0 && str12.length === 0 && str13.length !== 0){
 										emsg = "月の";
-									}else if(str1.length !== 0 && str2.length !== 0 && str3.length === 0){
+									}else if(str11.length !== 0 && str12.length !== 0 && str13.length === 0){
 										emsg = "回の";
-									}else if(str1.length === 0 && str2.length === 0 && str3.length !== 0){
+									}else if(str11.length === 0 && str12.length === 0 && str13.length !== 0){
 										emsg = "年と月の";
-									}else if(str1.length !== 0 && str2.length === 0 && str3.length === 0){
+									}else if(str11.length !== 0 && str12.length === 0 && str13.length === 0){
 										emsg = "月と回の";
-									}else if(str1.length === 0 && str2.length !== 0 && str3.length === 0){
+									}else if(str11.length === 0 && str12.length !== 0 && str13.length === 0){
 										emsg = "年と回の";
 									}
 									alert("企画回の"+emsg+"欄が選択されていません。");
