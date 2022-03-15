@@ -301,11 +301,6 @@ height:20px
 					<label class="h6">※配送回から過去3か月前までの<br>　明細を調べる事ができます。</label>
 				</div>
 			</div>
-
-
-
-
-
 			<div class="form-row">
 				<label class="col-sm-3 col-form-label">③注文番号：</label>
 				<div class="col-sm-9">
@@ -580,15 +575,6 @@ function non2(){
 	}
 }
 
-
-
-
-
-
-
-
-
-
 function checkSelect(obj,val){
 	for(var i=0;i<obj.length;i++){
 		if(obj[i].value==val){
@@ -655,40 +641,61 @@ function reload() {
 								let str12= toDoubleDigits(document.getElementById('kikaku-month').value); // 月
 								let str13= document.getElementById("kai").value; // 回
 								let kikanm = str11+str12+str13;
-						if(kikanm.length === 0 || kikanm.length === 7){
-									var result = window.confirm("メールを作成しても宜しいですか？");
-										if( result ) {
-											var toDoubleDigits = function(num) {
-											  num += "";
-											  if (num.length === 1) {
-											    num = "0" + num;
-											  }
-											 return num;
-											};
-											var kumcd = document.getElementById('kmcode').value;
-											var time1 =  document.getElementById('kikaku-year').value;
-											var time2 =  toDoubleDigits(document.getElementById('kikaku-month').value);
-											var time3 = document.getElementById('kai').value;
-											var time4 =  document.getElementById('kikaku-year2').value;
-											var time5 =  toDoubleDigits(document.getElementById('kikaku-month2').value);
-											var time6 = document.getElementById('kai2').value;
-											var pname = document.getElementById('pname').value;
-											var cyumon = document.getElementById('pcode').value;
-											kmcode = kumcd;
-											kikakai = time1+time2+time3;
-											kikakai2 = time4+time5+time6;
-											pcode = cyumon;
-											address = 'henkin@ml.palcoop.or.jp';
-											subject = '伝レス-返金';
-											body = '{"body":{"kmcode":"'+kmcode+
-													'","kikakai":"'+kikakai+
-													'","kikakai2":"'+kikakai2+
-													'","pcode":"'+pcode+
-													'","pname":"'+pname+
-													'"}}';
-											location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
-										} else {
+								if(kikanm.length === 0 || kikanm.length === 7){
+									let str14 document.getElementById("kikaku-year2").value;
+									let str15= document.getElementById("kikaku-month2").value;
+									let str16= document.getElementById("kai2").value;
+									let kikanm2 = str14+str15+str16;
+									if(kikanm2.length === 0 || kikanm2.length === 7){
+										var result = window.confirm("メールを作成しても宜しいですか？");
+											if( result ) {
+												var toDoubleDigits = function(num) {
+												  num += "";
+												  if (num.length === 1) {
+												    num = "0" + num;
+												  }
+												 return num;
+												};
+												var kumcd = document.getElementById('kmcode').value;
+												var time1 =  document.getElementById('kikaku-year').value;
+												var time2 =  toDoubleDigits(document.getElementById('kikaku-month').value);
+												var time3 = document.getElementById('kai').value;
+												var time4 =  document.getElementById('kikaku-year2').value;
+												var time5 =  toDoubleDigits(document.getElementById('kikaku-month2').value);
+												var time6 = document.getElementById('kai2').value;
+												var pname = document.getElementById('pname').value;
+												var cyumon = document.getElementById('pcode').value;
+												kmcode = kumcd;
+												kikakai = time1+time2+time3;
+												kikakai2 = time4+time5+time6;
+												pcode = cyumon;
+												address = 'henkin@ml.palcoop.or.jp';
+												subject = '伝レス-返金';
+												body = '{"body":{"kmcode":"'+kmcode+
+														'","kikakai":"'+kikakai+
+														'","kikakai2":"'+kikakai2+
+														'","pcode":"'+pcode+
+														'","pname":"'+pname+
+														'"}}';
+												location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
+											} else {
+											}
+									}else{
+										if(str14.length === 0 && str15.length !== 0 && str16.length !== 0){
+											emsg = "年の";
+										}else if(str14.length !== 0 && str15.length === 0 && str16.length !== 0){
+											emsg = "月の";
+										}else if(str14.length !== 0 && str15.length !== 0 && str16.length === 0){
+											emsg = "回の";
+										}else if(str14.length === 0 && str15.length === 0 && str16.length !== 0){
+											emsg = "年と月の";
+										}else if(str14.length !== 0 && str15.length === 0 && str16.length === 0){
+											emsg = "月と回の";
+										}else if(str14.length === 0 && str15.length !== 0 && str16.length === 0){
+											emsg = "年と回の";
 										}
+										alert("企画回範囲選択の"+emsg+"欄が選択されていません。");
+									}
 								}else{
 									var emsg;
 									if(str11.length === 0 && str12.length !== 0 && str13.length !== 0){
