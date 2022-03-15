@@ -675,24 +675,25 @@ function reload() {
 														'","kikakai":"'+kikakai+
 														'","kikakai2":"'+kikakai2+
 														'","pcode":"'+pcode+
-														'","syonm":"'+pname+
+														'","pname":"'+pname+
 														'"}}';
 												location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
 											} else {
 											}
 									}else{
+										var emsg2;
 										if(str14.length === 0 && str15.length !== 0 && str16.length !== 0){
-											emsg = "年の";
+											emsg2 = "年の";
 										}else if(str14.length !== 0 && str15.length === 0 && str16.length !== 0){
-											emsg = "月の";
+											emsg2 = "月の";
 										}else if(str14.length !== 0 && str15.length !== 0 && str16.length === 0){
-											emsg = "回の";
+											emsg2 = "回の";
 										}else if(str14.length === 0 && str15.length === 0 && str16.length !== 0){
-											emsg = "年と月の";
+											emsg2 = "年と月の";
 										}else if(str14.length !== 0 && str15.length === 0 && str16.length === 0){
-											emsg = "月と回の";
+											emsg2 = "月と回の";
 										}else if(str14.length === 0 && str15.length !== 0 && str16.length === 0){
-											emsg = "年と回の";
+											emsg2 = "年と回の";
 										}
 										alert("企画回範囲選択の"+emsg+"欄が選択されていません。");
 									}
