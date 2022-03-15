@@ -642,9 +642,9 @@ function reload() {
 								let str13= document.getElementById("kai").value; // 回
 								let kikanm = str11+str12+str13;
 								if(kikanm.length === 0 || kikanm.length === 7){
-									let str14 document.getElementById("kikaku-year2").value;
-									let str15= document.getElementById("kikaku-month2").value;
-									let str16= document.getElementById("kai2").value;
+									let str14 = document.getElementById("kikaku-year2").value;
+									let str15 = toDoubleDigits(document.getElementById("kikaku-month2").value);
+									let str16 = document.getElementById("kai2").value;
 									let kikanm2 = str14+str15+str16;
 									if(kikanm2.length === 0 || kikanm2.length === 7){
 										var result = window.confirm("メールを作成しても宜しいですか？");
