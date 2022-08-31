@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- Latest compiled and minified CSS -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="apple-touch-icon" href="https://pal0905.github.io/PNE/TH.ico" sizes="180x180">
+<style>
+body {
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-weight: bolder
+	line-height:25px;
+	font-size:1.2em;
+}
+
+textarea {
+	width: 100%;
+}
+
+#sendFrom {
+	margin: 15px auto;
+	width: 100%;
+	height: 100px;
+	border: solid 1px black;
+	background-color: #ddd;
+	line-height: 100px;
+	text-align: center;
+}
+
+.nontext {
+	border: none;
+	width: 130px;
+	background: white;
+	opacity: 0;
+}
+
+.required::after {
+	content: "必須";
+	background-color: #f0ad4e;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	min-width: 10px;
+	padding: 3px 7px;
+	margin: 0px 5px;
+	line-height: 1;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-align: center;
+	border-radius: 10px;
+	display: inline-block;
+}
+label ~ label {
+	margin-left: 30px;
+}
+
+/* ベースのラジオボタン */
+.radio-btns input[type=radio] {
+  display: none;
+}
+
+.radio-btns label {
+  position: relative;
+  padding: 5px 15px 5px 50px;
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+  background: #48d1cc;
+  letter-spacing: 0.1em;
+  border-radius: 10px;
+}
+
+.radio-btns input[type=radio]  + label::before,
+.radio-btns input[type=radio]  + label::after {
+  position: absolute;
+  content: '';
+  display: block;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 下 */
+.radio-btns input[type=radio]  + label::before {
+  border-radius: 30px;
+}
+
+.radio-btns input[type=radio]  + label::after {
+  height: 15px;
+  width: 15px;
+  background: #fff;
+  border-radius: 15px;
+  transition: .1s;
+}
+
+.radio-btns input[type=radio]:checked + label::after {
+  left: 30px;
+  background: #ffa500;
+}
+
+.radio-btns input[type=radio]:checked + label {
+  background: #005580;
+}
+.input-group,
+.input-group__control,
+.input-group__addon {
+  box-sizing:border-box;
+}
+
+.input-group {
+  display:table;
+  width:100%;
+  border-collapse:separate;
+  font-size:14px;
+}
+
+.input-group__control,
+.input-group__addon {
+  display:table-cell;
+  height:40px;
+  padding:8px 14px;
+}
+
+.input-group__control {
+  float:left;
+  width:100%;
+  margin:0;
+  border:1px solid #D3D3D3;
+  border-radius:5px;
+  font-size:14px;
+  font-family:inherit;
+  line-height:1.5;
+  -webkit-appearance:none;
+          appearance:none;
+}
+
+.input-group__addon {
+  width:1%;
+  border-width:1px 0 1px 1px;
+  border-style:solid;
+  border-color:#C0C0C0;
+  white-space:nowrap;
+  vertical-align:middle;
+  text-align:center;
+  line-height:1;
+}
+
+.input-group__control + .input-group__addon {
+  border-width:1px 1px 1px 0;
+}
+
+.wi{
+ width: 10px;
+}
+.button1{
+border-radius:30px;
+background:orange;
+width:20px;
+height:20px
+}
+.switch3__label {
+    width: 37px;
+    position: relative;
+    display: inline-block;
+    padding-top: 3px;
+}
+.switch3__content {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    border-radius: 7px;
+    height: 14px;
+    background-color: rgba(34,31,31,.26);
+    -webkit-transition: all .1s .4s;
+       -moz-transition: all .1s .4s;
+        -ms-transition: all .1s .4s;
+         -o-transition: all .1s .4s;
+            transition: all .1s .4s;
+    overflow: hidden;
+}
+.switch3__content:after {
+    content: "";
+    display: block;
+    position: absolute;
+
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 7px;
+    -webkit-transition: all .5s;
+       -moz-transition: all .5s;
+        -ms-transition: all .5s;
+         -o-transition: all .5s;
+            transition: all .5s;
+}
+.switch3__input {
+    display: none;
+}
+.switch3__circle {
+    display: block;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    -webkit-border-radius: 10px;
+            border-radius: 10px;
+    background-color: #F1F1F1;
+    -webkit-transition: all .2s;
+       -moz-transition: all .2s;
+        -ms-transition: all .2s;
+         -o-transition: all .2s;
+            transition: all .2s;
+    -webkit-box-shadow: 0 2px 2px #ccc;
+            box-shadow: 0 2px 2px #ccc;
+}
+.switch3__input:checked ~ .switch3__circle {
+    left: 18px;
+    background-color: #00c4cc;
+}
+.switch3__input:checked ~ .switch3__content {
+    border-color: transparent;
+    -webkit-transition: all 0s;
+       -moz-transition: all 0s;
+        -ms-transition: all 0s;
+         -o-transition: all 0s;
+            transition: all 0s;
+}
+.switch3__input:checked ~ .switch3__content:after {
+    background-color: rgba(55 190 176 / 25%);
+    width: 100%;
+}
+dl.henkinsyu dd:after { content: ''; display: block; clear: both; }
+dl.henkinsyu dd li {
+	position: relative;
+	list-style: none;
+	float: left;
+	width: 40%;
+}
+dl.henkinsyu dd label {
+	display: block;
+	padding: 10px 10px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(0.5, #ddd), color-stop(0.5, #ccc), color-stop(1, #bbb));
+	border: 1px solid #fff;
+	border-radius: 10px 0 0 10px;
+	-webkit-box-shadow: 0 0 5px #aaa;
+	color: #333;
+	font-weight: bold;
+	text-shadow: 0 1px #fff;
+	text-align: center;
+	color: #555;
+}
+dl.henkinsyu dd li:last-child label {
+	border-left: 0;
+	border-radius: 0 10px 10px 0;
+}
+dl.henkinsyu dd input[type="radio"]:checked + label {
+	text-shadow: 0 -1px #fff;
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(100,100,100,.3)), color-stop(1, rgba(255,255,255,0)));
+	color: #111;
+}
+dl.henkinsyu dd input[type="radio"] {
+	opacity : 0;
+	position: absolute;
+	top: -3px;
+	left: -3px;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="navbar">
+			<h1>返金フォーム</h1>
+		</div>
+		<div>
+<br>
+			<p class="radio-btns">
+			  <input type="radio" id="kumi" name="corres" value="0" onclick="formSwitch('#ffffff')" checked><label for="kumi"><span>数量返金</span></label>
+			  <input type="radio" id="tiiki" name="corres" value="1" onclick="formSwitch('#aecdd2')"><label for="tiiki">部分返金</label>
+			</p>
+		</div>
+
+<table class="table table-sm table-striped table-bordered">
+  <tr><td>組合員名</td><td><div id="area2"></div></td></tr>
+<tr><td>企画回</td><td><div id="area6"></div></td></tr>
+  <tr><td>注文番号</td><td><div id="area3"></div></td></tr>
+  <tr><td>商品名</td><td><div id="area4"></div></td></tr>
+  <tr><td>数量</td><td><div id="area1"></div></td></tr>
+ <tr><td>金額</td><td><div id="area5"></div></td></tr>
+</table>
+
+
+
+<form id="content" name="content">
+
+<dl class="henkinsyu">
+<dd>
+	<ul>
+	<li><input type="radio" name="refund" id="quantity" value="qu" checked/><label for="quantity">数量返金</label></li>
+	<li><input type="radio" name="refund" id="shortage" value="sh"/><label for="shortage">欠品返金</label></li>
+	</ul>
+</dd>
+</dl>
+			<div class="form-row">
+				<br><label class="col-sm-3 col-form-label">①数量：</label>
+				<div class="col-sm-9">
+					<p>
+						<select class="custom-select w-25" id="suu" name="suu"></select>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">②理由：</label>
+				<div class="col-sm-9" id="riyu">
+					<p>
+						<select class="custom-select w-75" id="sriyu" name="sriyu">
+							<option value="03">傷み・カビ・腐り・熟しすぎ</option>
+							<option value="44">★農産:食味不良（酸っぱい・味がないなど）</option>
+							<option value="04">青い・硬い・未熟</option>
+							<option value="32">生協ミス：注文間違い</option>
+							<option value="46">組合員ミス：注文間違い</option>
+							<option value="31">見た目イメージ違い</option>
+							<option value="06">汚れ（包材の汚れ・移染など）</option>
+							<option value="21">産地・仕様・原材料の変更</option>
+							<option value="43">支所ロス：割れ・潰れ・折れ・破袋など</option>
+							<option value="45">支所ロス：解凍＆冷蔵品温管理不足</option>
+							<option value="14">チラシの表示と実物が違う</option>
+							<option value="16">その他の不良品返品</option>
+							<option value="17">遅配</option>
+						</select>
+					</p>
+				</div>
+				<div class="col-sm-9" id="keppin">
+					<p>
+						<select class="custom-select w-75" id="skeppin" name="skeppin">
+							<option value="40">他に違う商品が入っていた</option>
+							<option value="41">数量間違い（入っていなかった）</option>
+							<option value="42">その他・不明</option>
+						</select>
+					</p>
+				</div>
+			</div>
+		</form>
+		<form id="area" name="area">
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">①返金金額：</label>
+				<div class="col-sm-9">
+					<p style="display:inline-flex">
+					  <input type="number" id="kingaku" name="kingaku" class="form-control" placeholder="金額"><span><input type="button" class="btn" value="円" readonly></span>
+						<span><input type="text" class="nontext w-25" disabled></span>
+						<span><input type="button" class="btn btn-info" value="リセット" onclick="reload()"></span>
+					</p>
+				</div>
+			</div>
+			<div class="form-row">
+				<label class="col-sm-3 col-form-label">②理由：</label>
+				<div class="col-sm-9">
+					<p>
+						<select class="custom-select w-75" id="riyu2" name="riyu2">
+							<option value="03">傷み・カビ・腐り・熟しすぎ</option>
+							<option value="44">★農産:食味不良（酸っぱい・味がないなど）</option>
+							<option value="04">青い・硬い・未熟</option>
+							<option value="32">生協ミス：注文間違い</option>
+							<option value="46">組合員ミス：注文間違い</option>
+							<option value="31">見た目イメージ違い</option>
+							<option value="06">汚れ（包材の汚れ・移染など）</option>
+							<option value="21">産地・仕様・原材料の変更</option>
+							<option value="43">支所ロス：割れ・潰れ・折れ・破袋など</option>
+							<option value="45">支所ロス：解凍＆冷蔵品温管理不足</option>
+							<option value="14">チラシの表示と実物が違う</option>
+							<option value="16">その他の不良品返品</option>
+							<option value="17">遅配</option>
+						</select>
+					</p>
+				</div>
+			</div>
+		</form>
+		<input type="button" id="sendFrom" value="メール作成"><br> <br>
+	</div>
+</body>
+<script>
+
+let radio_btns = document.querySelectorAll(`input[type='radio'][name='refund']`);
+document.getElementById("keppin").style.display ="none";
+for (let target of radio_btns) {
+	target.addEventListener(`change`, function () {
+		const riyu = document.getElementById("riyu");
+		if(target.value=="qu"){
+			// noneで非表示
+			keppin.style.display ="none";
+			riyu.style.display ="block";
+		}else{
+			// blockで表示
+			keppin.style.display ="block";
+			riyu.style.display ="none";
+		}
+	});
+}
+
+function formSwitch(newColor) {
+        decided = document.getElementsByName('corres')
+        if (decided[0].checked) {
+            document.getElementById('content').style.display = "";
+            document.getElementById('area').style.display = "none";
+	    document.body.style.backgroundColor = newColor;
+
+        } else if (decided[1].checked) {
+            document.getElementById('content').style.display = "none";
+            document.getElementById('area').style.display = "";
+	    document.body.style.backgroundColor = newColor;
+
+        } else {
+            document.getElementById('content').style.display = "none";
+            document.getElementById('area').style.display = "none";
+        }
+    }
+    window.addEventListener('load', formSwitch());
+
+window.onload=function(){
+	// URLパラメータ文字列を取得する
+	var param = location.search
+	var S = getParam('suryo').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var K = getParam('kname').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var C = getParam('cyumoncd').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var SN = getParam('syohinnm').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"").substr( 0, 11 );
+	var KG = getParam('kingaku').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	var KK = getParam('kikaku').replaceAll('\"','').replace(/\s+$/,"").replace(/^\s+/,"");
+	// 企画回分割
+	var nen = KK.slice(0, 4);
+	var tuki = Number(KK.slice(4, 6));
+	var kai = KK.slice(6, 7);
+	// 単価判定
+	var result = Number(0);
+	var intS = Number(S);
+
+	document.getElementById("area1").innerText = S;
+	document.getElementById("area2").innerText = K;
+	document.getElementById("area3").innerText = C;
+	document.getElementById("area4").innerText = SN;
+	if(intS > 1){result = Number(KG) / intS;
+		if(result > 0){
+			document.getElementById("area5").innerText = KG + "円" + " " +"(単価：" + result + "円)";
+		}else{
+			document.getElementById("area5").innerText = KG + "円";
+		}
+	}else{
+		document.getElementById("area5").innerText = KG + "円";
+	}
+	document.getElementById("area6").innerText = nen + "年" + tuki +"月" + kai + "回";
+
+		if(intS >= 1){
+			var count=1;
+			for(let v = 0;v<intS;v++){
+				const selectSu = document.getElementById('suu');
+				const option1 = document.createElement('option');
+				option1.value = count;
+				option1.textContent = count;
+				selectSu.appendChild(option1)
+				count += 1;
+			}
+		}else{
+
+		}
+}
+
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function checkSelect(obj,val){
+	for(var i=0;i<obj.length;i++){
+		if(obj[i].value==val){
+			obj[i].selected=true;
+			break;
+		}
+	 }
+}
+
+function reload() {
+	var result = confirm('本当に入力内容を削除してもよろしいですか？');
+		if(result) {
+			location.reload();
+		}
+}
+
+	var regex = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|[\ud83c[\ude01\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|[\ud83c[\ude32\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|[\ud83c[\ude50\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])/g;
+	let count = 0;
+	let timer;
+	const ua = navigator.userAgent.toLowerCase();
+	const isSP = /iphone|ipod|ipad|android/.test(ua);
+	const b = document.getElementById('sendFrom');
+	const eventStart = isSP ? 'touchstart' : 'mousedown';
+	const eventEnd   = isSP ? 'touchend' : 'mouseup';
+	const eventLeave = isSP ? 'touchmove' : 'mouseleave';
+
+	b.addEventListener(eventStart, e => {
+	  e.preventDefault();
+	  b.classList.add('active');
+	  timer = setInterval(() => {
+	    count++;
+	  }, 10);
+	})
+
+	b.addEventListener(eventEnd, e => {
+	  e.preventDefault();
+	  if (count) {
+	    b.classList.remove('active');
+	    clearInterval(timer);
+	    let second = (count / 100);
+		var elements = document.getElementsByName('corres');
+		var len = elements.length;
+		var radioValue = '';
+		for (let i = 0; i < len; i++){
+			if (elements.item(i).checked){
+				radioValue = elements.item(i).value;
+			}
+		}
+		if(second > 0.0 && second < 0.6){
+			if(radioValue === '1'){
+				// 部分返金
+				var claim = Number(getParam('kingaku').replaceAll('\"',''));
+				var setkingaku = document.area.kingaku.value;
+				if(claim < setkingaku){
+					alert("請求金額を越えて設定しています。");
+				}else if(setkingaku.length == 0){
+					alert("金額が入力されていません。");
+				}else{
+				var result = window.confirm("メールを作成しても宜しいですか？");
+							if( result ) {
+								var cyumon = getParam('cyumoncd').replaceAll('\"','');
+								var kikaku = getParam('kikaku').replaceAll('\"','');
+								var kumcd = getParam('kumcd').replaceAll('\"','');
+
+								const str4 = document.area.kingaku.value;
+								const num5 = riyu2.selectedIndex;
+								const str5 = document.area.riyu2.options[num5].value;
+								address = 'henkinTest@palcoop.or.jp';
+								subject = '部分返金';
+								body = '{"body":{"kmcode":"'+kumcd+
+								'","kikakai":"'+kikaku+
+								'","pcode":"'+cyumon+
+								'","quantity":"'+''+
+								'","kingaku":"'+str4+
+								'","riyucd":"'+str5+
+								'","shortage":"bu"}}';
+								location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
+							} else {
+							}
+				}
+			}else{
+			// 数量返金返金
+			var result = window.confirm("メールを作成しても宜しいですか？");
+				if( result ) {
+					let val = document.getElementsByName('refund');
+					let len = val.length;
+					let flagVal = '';
+
+					for (let i = 0; i < len; i++){
+					    if (val.item(i).checked){
+					        flagVal = val.item(i).value;
+					    }
+					}
+					if(flagVal == "qu"){
+						var cyumon = getParam('cyumoncd').replaceAll('\"','');
+						var kikaku = getParam('kikaku').replaceAll('\"','');
+						var kumcd = getParam('kumcd').replaceAll('\"','');
+						const num1 = suu.selectedIndex;
+						const str1 = document.content.suu.options[num1].value;
+						const num2 = sriyu.selectedIndex;
+						const str2 = document.content.sriyu.options[num2].value;
+						address = 'henkinTest@palcoop.or.jp';
+						subject = '数量返金';
+						body = '{"body":{"kmcode":"'+kumcd+
+								'","kikakai":"'+kikaku+
+								'","pcode":"'+cyumon+
+								'","quantity":"'+str1+
+								'","kingaku":"'+''+
+								'","riyucd":"'+str2+
+								'","shortage":"'+flagVal+
+								'"}}';
+						location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
+					}else{
+						var cyumon = getParam('cyumoncd').replaceAll('\"','');
+						var kikaku = getParam('kikaku').replaceAll('\"','');
+						var kumcd = getParam('kumcd').replaceAll('\"','');
+						const num1 = suu.selectedIndex;
+						const str1 = document.content.suu.options[num1].value;
+							const num3 = skeppin.selectedIndex;
+							const str2 = document.content.skeppin.options[num3].value;
+						address = 'henkinTest@palcoop.or.jp';
+						subject = '数量返金';
+						body = '{"body":{"kmcode":"'+kumcd+
+								'","kikakai":"'+kikaku+
+								'","pcode":"'+cyumon+
+								'","quantity":"'+str1+
+								'","kingaku":"'+''+
+								'","riyucd":"'+str2+
+								'","shortage":"'+flagVal+
+								'"}}';
+						location.href = 'mailto:' + address + '?subject=' + subject + '&body=' + body;
+					}
+				} else {
+				}
+			}
+		}
+	}
+	count = 0;
+});
+
+b.addEventListener(eventLeave, e => {
+  e.preventDefault();
+  let el;
+  el = isSP ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : b;
+  if (!isSP || el !== b) {
+    b.classList.remove('active');
+    clearInterval(timer);
+     e.preventDefault();
+    count = 0;
+  }
+});
+</script>
+</html>
