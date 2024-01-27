@@ -105,7 +105,7 @@ console.log(myObjStr);
    zlist[cnt].push(myObjStr);
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
-      li.textContent = zlist[i];
+      li.textContent = zlist.indexOf("jan");
       document.getElementById('list').appendChild(li);
     }
   } else {
@@ -126,17 +126,18 @@ catch (error) {
 	  
   console.log('cnt  ---- ' + cnt )
 console.log(myObjStr);
-		  if(cnt === 0){
-		zlist = myObjStr;  
-		  }else{
-   zlist.push(myObjStr);
-		  }
-   for (var i = 0; i < zlist.length; i++) {
+		zlist.send = myObjStr; 
+
+for (key in zlist) {
+    console.log(key);
+    console.log("janは" + zlist [key].jan +"です");
+    console.log("加減は" + zlist [key].age +"円です");
       var li = document.createElement('li');
-      li.textContent = zlist[i].jan;
+      li.textContent = zlist [key].jan;
       document.getElementById('list').appendChild(li);
-    }
-  }
+}
+
+	  
 	console.log('cnt2  ---- ' + cnt )
 	  cnt += 1;
 	console.log('cnt3  ---- ' + cnt )
