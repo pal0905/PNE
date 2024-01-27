@@ -93,7 +93,8 @@ function addsubtra (ans) {
   console.log('value ---- ' + value)
   console.log('zlist ---- ' + zlist)
   cnt += 1;
-  zlist[cnt],push({"jan:" + value + ",addsub:" + ans});
+  var myObjStr = JSON.parse("jan:" + value + ",addsub:" + ans);
+  zlist[cnt],push({ myObjStr });
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
       li.textContent = zlist[i];
