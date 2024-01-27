@@ -113,7 +113,9 @@ console.log(myObjStr);
 
 for (key in zlist) {
     console.log(key);
-    myjan += key + ":" + zlist[key];
+      var li = document.createElement('li');
+      li.textContent = zlist[key];
+      document.getElementById('list').appendChild(li);
 }
 
 	  
@@ -121,9 +123,6 @@ for (key in zlist) {
 	  cnt += 1;
 	console.log('cnt3  ---- ' + cnt )
   }
-      var li = document.createElement('li');
-      li.textContent = myjan;
-      document.getElementById('list').appendChild(li);
 }
 
 </script>
