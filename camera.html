@@ -15,14 +15,14 @@
 			  <div id="my_result">***</div>
         <table>
           <tr>
-            <td><button class="btn btn-primary" id="my_minus">-</button></td>
+            <td><button class="btn btn-primary" id="my_minus" onclick="addsubtra(1)">-</button></td>
             <td>
               <div id="my_barcodeemp">
                 <div id="my_barcode">
                 <div>***</div>
               </div>
             </td>
-            <td><button class="btn btn-info" id="my_plus">+</button></td>
+            <td><button class="btn btn-info" id="my_plus" onclick="addsubtra(2)">+</button></td>
           </tr>
         </table>
 			</div>
@@ -33,61 +33,77 @@
         <button class="btn btn-warning" id="my_stop">送信</button>
       </div>
 		</div>
+     <ul id="list"></ul>
 	</div>
 </body>
 <script src="//code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="//unpkg.com/@ericblade/quagga2@1.7.4/dist/quagga.min.js"></script>
 <script src="//cdn.jsdelivr.net/gh/mtaketani113/jquery-barcode@master/jquery-barcode.js"></script>
 <script>
-$("#my_start").click(()=>{
-	console.log("Start!!");
-	Quagga.init({
-		inputStream: {
-			name : "Live",
-			type : "LiveStream",
-			target: document.getElementById("my_quagga")
-		},
-		decoder: {
-			readers: ["ean_reader"]
-		}
-	}, err=>{
-		if(err){
-			console.log(err);
-			return;
-		}
-		console.log("Initialization finished!!");
-		Quagga.start();
-	});
+var value = "";
+window.addEventListener('DOMContentLoaded', function(){
+/** jQueryの処理 */ 
+  $("#my_start").click(()=>{
+    Quagga.init({
+      inputStream: {
+        name : "Live",
+        type : "LiveStream",
+        target: document.getElementById("my_quagga")
+      },
+      decoder: {
+        readers: ["ean_reader"]
+      }
+    }, err=>{
+      if(err){
+        console.log(err);
+        return;
+      }
+      Quagga.start();
+    });
 
-	Quagga.onProcessed(result=>{
-		if(result == null) return;
-		if(typeof(result) != "object") return;
-		if(result.boxes == undefined) return;
-		const ctx = Quagga.canvas.ctx.overlay;
-		const canvas = Quagga.canvas.dom.overlay;
-		ctx.clearRect(0, 0, parseInt(canvas.width), parseInt(canvas.height));
-		Quagga.ImageDebug.drawPath(result.box, 
-			{x: 0, y: 1}, ctx, {color: "blue", lineWidth: 5});
-	});
+    Quagga.onProcessed(result=>{
+      if(result == null) return;
+      if(typeof(result) != "object") return;
+      if(result.boxes == undefined) return;
+      const ctx = Quagga.canvas.ctx.overlay;
+      const canvas = Quagga.canvas.dom.overlay;
+      ctx.clearRect(0, 0, parseInt(canvas.width), parseInt(canvas.height));
+      Quagga.ImageDebug.drawPath(result.box, 
+        {x: 0, y: 1}, ctx, {color: "blue", lineWidth: 5});
+    });
 
-	Quagga.onDetected(result=>{
-		console.log(result.codeResult.code);
-		$("#my_result").text(result.codeResult.code);
-		$("#my_barcode div").barcode(result.codeResult.code, "ean13");
-	});
+    Quagga.onDetected(result=>{
+      console.log(result.codeResult.code);
+      $("#my_result").text(result.codeResult.code);
+      $("#my_barcode div").barcode(result.codeResult.code, "ean13");
+      value = result.codeResult.code;
+    });
+  });
+
+  $("#my_stop").click(()=>{
+    Quagga.stop();
+  });
 });
 
-$("#my_stop").click(()=>{
-	console.log("Stop!!");
-	Quagga.stop();
-});
-</script>
-<style scoop>
-
-table{
-margin:0 auto;
+var cnt = 0;
+var zlist = [];
+function addsubtra (ans) {
+  console.log('cnt ---- ' + cnt)
+  console.log('ans ---- ' + ans)
+  console.log('value ---- ' + value)
+  console.log('zlist ---- ' + zlist)
+  cnt += 1;
+  zlist[cnt],push("{jan:" + value + ",addsub:" + ans})
+   for (var i = 0; i < zlist.length; i++) {
+      var li = document.createElement('li');
+      li.textContent = zlist[i];
+      document.getElementById('list').appendChild(li);
+    }
 }
 
+</script>
+
+<style scoop>
 html, body{
 	width: 100%;
   height: 100%;
@@ -95,16 +111,20 @@ html, body{
   padding: 0px;
 }
 
-#my_container{
+// -----------------------------------------
+// カメラ部分
+#my_container{ // カメラ表示全体の入れ子
 	width: 100%;
-  height: 600px;
+  height: 550px;
 	display: flex;
   flex-flow: wrap;
 	justify-content: space-around;
-	align-items: center;
+  align-items: flex-end;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
-#my_inner{
+#my_inner{ // カメラの表示及びカメラ周辺
 	margin: 0px;
   padding: 10px 10px;
 	border-radius: 20px;
@@ -114,47 +134,32 @@ html, body{
   text-align: center;
 }
 
-#my_quagga{
+#my_quagga{ // カメラの表示
 	width: 380px;
   height: 400px;
-	/* margin: 5px; */
   padding: 0px;
 	position: relative;
 	background-color: silver;
 }
 
-#my_quagga video{
-	width: 100%;
-  height: 100%; 
-	position: absolute;
-	top: 0px; left: 0px;
-}
-
-#my_quagga canvas{
-	width: 100%;
-  height: 100%; 
-	position: absolute;
-	top: 0px; left: 0px;
-}
-
-#my_result{
+#my_result{ // カメラの表示すぐ下
 	width: 100%;
   height: 100%; 
 	font-size: 1rem;
   text-align: center;
 }
 
-#my_answer{
-  margin:center;
+table{ // my_result下のボタンの配置（並び制御用）
+  margin:0 auto;
 }
 
-#my_minus{
+#my_minus{ // マイナスボタン
   margin-right: 80px;
   width: 50px;
   height: 50px;
 }
 
-#my_barcode{
+#my_barcode{ // バーコードの画像
 	width: 100%;
   height: 100%;
 	display: flex;
@@ -162,23 +167,29 @@ html, body{
 	justify-content: space-around;
 	align-items: center;
 }
-#my_barcodeemp{
-  /* width: 100px; */
-  /* float: center; */
-}
 
-#my_plus{
+#my_plus{ // マイナスボタン
   margin-left: 80px;
   width: 50px;
   height: 50px;
 }
 
-#my_start{
+// -----------------------------------------
+
+#my_answer{ // 読取・送信ボタンの入れ子
+  text-align:center;
+  margin: 0;
+  padding: 0;
+}
+
+#my_start{ // 読み取りボタン
+  margin-left: 80px;
   width: 100px;
   height: 50px;
 }
 
-#my_stop{
+#my_stop{ // 送信ボタン
+  margin-right: 80px;
   width: 100px;
   height: 50px;
 }
