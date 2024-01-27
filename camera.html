@@ -93,10 +93,10 @@ function addsubtra (ans) {
   cnt += 1;
   if (value !== '') {
 	  
-const obj = {
-  jan: String(value),
-  age: String(ans)
-};
+	const obj = {
+	  jan: String(value),
+	  age: String(ans)
+	};
 
 const myObjStr = JSON.stringify(obj);
 
@@ -105,7 +105,7 @@ console.log(myObjStr);
 
 	  
    // var myObjStr = JSON.parse(""jan":"" + String(value) + "","addsub:""" + String(ans) + """);
-   zlist[cnt].push({myObjStr});
+   zlist[cnt].push("{" + myObjStr + "}");
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
       li.textContent = zlist[i];
@@ -131,7 +131,7 @@ catch (error) {
     console.log('Error parsing JSON:', error, data);
 }
 	  
-   zlist[cnt].push({myObjStr});
+   zlist[cnt].push("{" + myObjStr + "}");
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
       li.textContent = zlist[i];
