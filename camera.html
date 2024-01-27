@@ -105,7 +105,7 @@ console.log(myObjStr);
 
 	  
    // var myObjStr = JSON.parse(""jan":"" + String(value) + "","addsub:""" + String(ans) + """);
-   zlist[cnt].push("{" + myObjStr + "}");
+   zlist[cnt].push(myObjStr);
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
       li.textContent = zlist[i];
@@ -131,7 +131,7 @@ catch (error) {
     console.log('Error parsing JSON:', error, data);
 }
 	  
-   zlist[cnt].push("{" + myObjStr + "}");
+   zlist[cnt].push(myObjStr);
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
       li.textContent = zlist[i];
