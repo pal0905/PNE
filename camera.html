@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <iframe class="ifra" src="https://script.google.com/macros/s/AKfycbypzZImsIrGOfdFxay0Jx7KolWGPIorH97GZNYazj_d8rLtsr6Hc8lNSTUFhAvg8AtOCQ/exec"/>
+    <iframe id="ifr" class="ifr"/>
   </body>
   <script>
+    function start () {
+      // iframeを取得
+	    var e_ifr = document.getElementById( "ifr" );
+	    // iframe内にページを表示
+	    e_ifr.srcdoc = "https://script.google.com/macros/s/AKfycbypzZImsIrGOfdFxay0Jx7KolWGPIorH97GZNYazj_d8rLtsr6Hc8lNSTUFhAvg8AtOCQ/exec";
+    }
     function iframe_display() {
     	$("iframe").on("load", function() {
     		try {
@@ -16,9 +22,11 @@
     }
     $(window).load(function() {
     	iframe_display();
+      start ();
     });
     $(window).resize(function() {
     	iframe_display();
+      start ();
     });
   </script>
   <style scoop>
