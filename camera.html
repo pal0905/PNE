@@ -92,8 +92,8 @@ function addsubtra (ans) {
   console.log('zlist ---- ' + zlist)
   cnt += 1;
   if (value !== '') {
-   var myObjStr = JSON.parse("jan:" + value + ",addsub:" + ans);
-   zlist[cnt],push({ myObjStr });
+   var myObjStr = JSON.parse("jan:" + String(value) + ",addsub:" + String(ans));
+   zlist[cnt].push({ myObjStr });
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
       li.textContent = zlist[i];
