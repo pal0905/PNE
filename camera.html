@@ -87,16 +87,16 @@ window.addEventListener('DOMContentLoaded', function(){
 
 var cnt = 0;
 var myObjStr = "";
-var zlist = {};
+var zlist = [];
 function addsubtra (ans) {
   console.log('zlist ---- ' + zlist)
 
   if (value !== '') {
 	  
-	const obj = [{
+	const obj = {
 	  jan: String(value),
 	  age: String(ans)
-	}];
+	};
 
 myObjStr = JSON.stringify(obj);
 
@@ -112,10 +112,10 @@ console.log(myObjStr);
 
 try {
 
-const obj = [{
+const obj = {
   jan: '00000000',
   age: String(ans)
-}];
+};
 
 myObjStr = JSON.stringify(obj);
 
