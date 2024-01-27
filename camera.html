@@ -114,15 +114,15 @@ console.log(myObjStr);
 
 for (key in zlist) {
     console.log(key);
-    console.log("janは" + zlist[key].jan +"です");
-    console.log("加減は" + zlist[key].age +"円です");
+    console.log("janは" + zlist[jan] +"です");
+    console.log("加減は" + zlist[addsub] +"円です");
       var li = document.createElement('li');
       li.textContent = zlist [key].toString();
       document.getElementById('list').appendChild(li);
 }
 
 	  
-	console.log('cnt2  ---- ' + cnt )
+	console.log('zlist  ---- ' + zlist.toString() )
 	  cnt += 1;
 	console.log('cnt3  ---- ' + cnt )
   }
