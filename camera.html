@@ -3,6 +3,24 @@
   <body>
     <iframe class="ifra" src="https://script.google.com/macros/s/AKfycbypzZImsIrGOfdFxay0Jx7KolWGPIorH97GZNYazj_d8rLtsr6Hc8lNSTUFhAvg8AtOCQ/exec"/>
   </body>
+  <script>
+    function iframe_display() {
+    	$("iframe").on("load", function() {
+    		try {
+    			$(this).height(0);
+    			$(this).height(this.contentWindow.document.documentElement.scrollHeight);
+    		} catch (e) {
+    		}
+    	});
+    	$("iframe").trigger("load");
+    }
+    $(window).load(function() {
+    	iframe_display();
+    });
+    $(window).resize(function() {
+    	iframe_display();
+    });
+  </script>
   <style scoop>
     .ifra{
       width: 100%;
