@@ -93,10 +93,10 @@ function addsubtra (ans) {
 
   if (value !== '') {
 	  
-	const obj = {
+	const obj = [{
 	  jan: String(value),
 	  age: String(ans)
-	};
+	}];
 
 myObjStr = JSON.stringify(obj);
 
@@ -126,12 +126,8 @@ catch (error) {
 	  
   console.log('cnt  ---- ' + cnt )
 console.log(myObjStr);
-	  if (cnt === 0) {
-zlist.push(myObjStr);		  
-	  } else {
 		  
    zlist[cnt].push(myObjStr);
-	  }
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
       li.textContent = zlist[i];
