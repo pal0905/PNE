@@ -100,7 +100,15 @@ function addsubtra (ans) {
       document.getElementById('list').appendChild(li);
     }
   } else {
+
+try {
+    
 	  var myObjStr = JSON.parse("jan:" + "00000000" + ",addsub:" + String(ans));
+}
+catch (error) {
+    console.log('Error parsing JSON:', error, data);
+}
+	  
    zlist[cnt].push({ myObjStr });
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
