@@ -100,8 +100,8 @@ function addsubtra (ans) {
       document.getElementById('list').appendChild(li);
     }
   } else {
-	  var myObjStr = JSON.parse("jan:" + 00000000 + ",addsub:" + ans);
-   zlist[cnt],push({ myObjStr });
+	  var myObjStr = JSON.parse("jan:" + "00000000" + ",addsub:" + String(ans));
+   zlist[cnt].push({ myObjStr });
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
       li.textContent = zlist[i];
