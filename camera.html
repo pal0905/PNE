@@ -129,11 +129,11 @@ console.log(myObjStr);
 		  if(cnt === 0){
 		zlist = myObjStr;  
 		  }else{
-   zlist[cnt].push(myObjStr);
+   zlist.push(myObjStr);
 		  }
    for (var i = 0; i < zlist.length; i++) {
       var li = document.createElement('li');
-      li.textContent = zlist[i];
+      li.textContent = zlist[i].jan;
       document.getElementById('list').appendChild(li);
     }
   }
