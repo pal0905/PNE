@@ -11,20 +11,21 @@
 
   <script>
     liff.init({
-      // LIFF IDを設定
-      liffId: '2006593403-P3ymZQAA' // ここにコピーしたLIFF IDを貼り付ける
-    }).then(() => {
-      // LIFFが初期化された後の処理
+      liffId: '2006593403-P3ymZQAA'
+    })
+    .then(() => {
+      // LIFFが初期化された後に処理を実行
       liff.getProfile()
-    .then(profile => {
-      // 取得したプロフィール情報を表示する
-      alert(profile);
-      // console.log(profile);
+        .then(profile => {
+          // プロフィール情報を表示する
+          console.log(profile);
+          // alertはエラーになる可能性があるので、console.logで確認することをおすすめします
+        })
+        .catch(err => {
+          console.error(err);
+        });
     })
     .catch(err => {
-      console.error(err);
-    });
-    }).catch((err) => {
       console.error(err);
     });
 
