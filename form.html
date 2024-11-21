@@ -17,7 +17,8 @@
       document.getElementById('myForm').addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(document.getElementById('myForm'));
-        fetch('YOUR_GAS_URL', {
+        const GAS_URL = 'https://script.google.com/macros/s/AKfycbxqtksp-J0fWt-Y4fz1W6ijs8gGYxO0V5SRN9sY-Z8cVIepCAn7oGEPNIlZHIclbdTHbQ/exec';
+        fetch(GAS_URL, {
           method: 'POST',
           body: formData
         })
