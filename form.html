@@ -15,7 +15,15 @@
       liffId: '2006593403-P3ymZQAA' // ここにコピーしたLIFF IDを貼り付ける
     }).then(() => {
       // LIFFが初期化された後の処理
-      closeWindow();
+      liff.getProfile()
+    .then(profile => {
+      // 取得したプロフィール情報を表示する
+      alert(profile);
+      // console.log(profile);
+    })
+    .catch(err => {
+      console.error(err);
+    });
     }).catch((err) => {
       console.error(err);
     });
