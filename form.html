@@ -32,33 +32,6 @@ liff.init({
   console.error(err);
 });
     
-    // liff.init({
-    //   liffId: '2006593403-P3ymZQAA'
-    // })
-    // .then(() => {
-    //   // LIFFが初期化された後に処理を実行
-    //   liff.getProfile()
-    //     .then(profile => {
-    //       // プロフィール情報を表示する
-    //       console.log(profile);
-    //       // alertはエラーになる可能性があるので、console.logで確認することをおすすめします
-    //     })
-    //     .catch(err => {
-    //       console.error(err);
-    //     });
-    //   liff.shareTargetPicker([{
-    //     type: 'text',
-    //     text: 'LIFFから送信されたメッセージです。'
-    //   }]).then(() => {
-    //     liff.closeWindow();
-    //   }).catch((err) => {
-    //     console.error(err);
-    //   });
-    // })
-    // .catch(err => {
-    //   console.error(err);
-    // });
-
     function sendMessage() {
       var message = document.getElementById('message').value;
       var formData = new FormData();
@@ -71,6 +44,7 @@ liff.init({
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
+        closeWindow();
       })
       .catch((error) => {
         console.error('Error:', error);
