@@ -10,32 +10,53 @@
   <button onclick="sendMessage()">送信</button>
 
   <script>
-    liff.init({
-      liffId: '2006593403-P3ymZQAA'
-    })
-    .then(() => {
-      // LIFFが初期化された後に処理を実行
-      liff.getProfile()
-        .then(profile => {
-          // プロフィール情報を表示する
-          console.log(profile);
-          // alertはエラーになる可能性があるので、console.logで確認することをおすすめします
-        })
-        .catch(err => {
-          console.error(err);
-        });
-      liff.shareTargetPicker([{
-        type: 'text',
-        text: 'LIFFから送信されたメッセージです。'
-      }]).then(() => {
-        liff.closeWindow();
-      }).catch((err) => {
-        console.error(err);
-      });
+liff.init({
+  liffId: '2006593403-P3ymZQAA'
+})
+.then(() => {
+  liff.getProfile()
+    .then(profile => {
+      // 取得したプロフィール情報を表示する
+      const userNameElement = document.getElementById('user-name');
+      userNameElement.textContent = profile.displayName;
+
+      const userPictureElement = document.getElementById('user-picture');
+      userPictureElement.src = profile.pictureUrl;
     })
     .catch(err => {
       console.error(err);
     });
+})
+.catch((err) => {
+  console.error(err);
+});
+    
+    // liff.init({
+    //   liffId: '2006593403-P3ymZQAA'
+    // })
+    // .then(() => {
+    //   // LIFFが初期化された後に処理を実行
+    //   liff.getProfile()
+    //     .then(profile => {
+    //       // プロフィール情報を表示する
+    //       console.log(profile);
+    //       // alertはエラーになる可能性があるので、console.logで確認することをおすすめします
+    //     })
+    //     .catch(err => {
+    //       console.error(err);
+    //     });
+    //   liff.shareTargetPicker([{
+    //     type: 'text',
+    //     text: 'LIFFから送信されたメッセージです。'
+    //   }]).then(() => {
+    //     liff.closeWindow();
+    //   }).catch((err) => {
+    //     console.error(err);
+    //   });
+    // })
+    // .catch(err => {
+    //   console.error(err);
+    // });
 
     function sendMessage() {
       var message = document.getElementById('message').value;
