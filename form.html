@@ -2,35 +2,40 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>LIFFフォーム</title>
-  <script src="https://static.line-scdn.net/liff/sdk/v2.1/liff.js"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://static.line-scdn.net/liff/v2/sdk.js"></script>
 </head>
 <body>
-  <form id="myForm">
-    <input type="text" id="message" name="message">
-    <input type="submit" value="送信">
-  </form>
+  <input type="text" id="message">
+  <button onclick="sendMessage()">送信</button>
+
   <script>
     liff.init({
-      liffId: '2006593403-P3ymZQAA' // 自分のLIFFのIDに置き換える
+      // LIFF IDを設定
+      liffId: '2006593403-P3ymZQAA' // ここにコピーしたLIFF IDを貼り付ける
     }).then(() => {
-      document.getElementById('myForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(document.getElementById('myForm'));
-        fetch('https://script.google.com/macros/s/AKfycbxqtksp-J0fWt-Y4fz1W6ijs8gGYxO0V5SRN9sY-Z8cVIepCAn7oGEPNIlZHIclbdTHbQ/exec', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-          alert(data);
-          liff.closeWindow();
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-      });
+      // LIFFが初期化された後の処理
+    }).catch((err) => {
+      console.error(err);
     });
+
+    function sendMessage() {
+      var message = document.getElementById('message').value;
+      var formData = new FormData();
+      formData.append('message', message);
+
+      fetch('https://script.google.com/macros/s/AKfycbxqtksp-J0fWt-Y4fz1W6ijs8gGYxO0V5SRN9sY-Z8cVIepCAn7oGEPNIlZHIclbdTHbQ/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    }
   </script>
 </body>
 </html>
