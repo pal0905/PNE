@@ -15,6 +15,7 @@
       liffId: '2006593403-P3ymZQAA' // ここにコピーしたLIFF IDを貼り付ける
     }).then(() => {
       // LIFFが初期化された後の処理
+      closeWindow();
     }).catch((err) => {
       console.error(err);
     });
@@ -36,6 +37,11 @@
         console.error('Error:', error);
       });
     }
+
+  function closeWindow() {
+    liff.closeWindow();
+  }
+    
   </script>
 </body>
 </html>
