@@ -24,8 +24,15 @@
         .catch(err => {
           console.error(err);
         });
+      liff.shareTargetPicker([{
+        type: 'text',
+        text: 'LIFFから送信されたメッセージです。'
+      }]).then(() => {
+        liff.closeWindow();
+      }).catch((err) => {
+        console.error(err);
+      });
     })
-      liff.closeWindow();
     .catch(err => {
       console.error(err);
     });
