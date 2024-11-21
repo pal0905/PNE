@@ -12,25 +12,25 @@
 <img id="user-picture" src="">
   <script>
 liff.init({
-  liffId: '2006593403-P3ymZQAA'
-})
-.then(() => {
-  liff.getProfile()
-    .then(profile => {
-      // 取得したプロフィール情報を表示する
-      const userNameElement = document.getElementById('user-name');
-      userNameElement.textContent = profile.displayName;
-
-      const userPictureElement = document.getElementById('user-picture');
-      userPictureElement.src = profile.pictureUrl;
+      liffId: '2006593403-P3ymZQAA'
     })
-    .catch(err => {
+    .then(() => {
+      liff.getProfile()
+        .then(profile => {
+          // 取得したプロフィール情報を表示
+          const userNameElement = document.getElementById('user-name');
+          userNameElement.textContent = profile.displayName;
+
+          const userPictureElement = document.getElementById('user-picture');
+          userPictureElement.src = profile.pictureUrl;
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    })
+    .catch((err) => {
       console.error(err);
     });
-})
-.catch((err) => {
-  console.error(err);
-});
     
     function sendMessage() {
       var message = document.getElementById('message').value;
