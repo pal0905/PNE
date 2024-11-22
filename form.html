@@ -12,6 +12,8 @@
 <div id="user-name"></div>
 <img id="user-picture" src="">
   <script>
+  var prop;
+  
 liff.init({
   liffId: '2006593403-P3ymZQAA'
 })
@@ -24,6 +26,7 @@ liff.init({
 })
 .then(profile => {
   // プロフィール情報を表示
+  prop = profile;
   const userNameElement = document.getElementById('user-name');
   userNameElement.textContent = profile.displayName;
   const userPictureElement = document.getElementById('user-picture');
@@ -39,7 +42,7 @@ alert('プロフィール：' + profile);
     function sendMessage() {
       var message = document.getElementById('message').value;
       var formData = new FormData();
-      formData.append('message', message);
+      formData.append('message', message, 'prop', prop);
 
       fetch('https://script.google.com/macros/s/AKfycbxqtksp-J0fWt-Y4fz1W6ijs8gGYxO0V5SRN9sY-Z8cVIepCAn7oGEPNIlZHIclbdTHbQ/exec', {
         method: 'POST',
