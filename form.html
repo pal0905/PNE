@@ -8,7 +8,7 @@
 <body>
   <input type="text" id="message">
   <button onclick="sendMessage()">送信</button>
-  <div>あ</div>
+  <div>い</div>
 <div id="user-name"></div>
 <img id="user-picture" src="">
   <script>
@@ -26,9 +26,10 @@ liff.init({
   // プロフィール情報を表示
   const userNameElement = document.getElementById('user-name');
   userNameElement.textContent = profile.displayName;
-
   const userPictureElement = document.getElementById('user-picture');
   userPictureElement.src = profile.pictureUrl;
+alert('プロフィール：' + profile);
+  
 })
 .catch(err => {
   console.error(err);
