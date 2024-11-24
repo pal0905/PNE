@@ -1,68 +1,255 @@
-<!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LIFF Stripe Checkout</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ぱるサポ登録フォーム</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+<style>
+.Form {
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+}
+@media screen and (max-width: 480px) {
+  .Form {
+    margin-top: 40px;
+  }
+}
+.Form-Item {
+  border-top: 1px solid #ddd;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+  }
+}
+.Form-Item:nth-child(5) {
+  border-bottom: 1px solid #ddd;
+}
+.Form-Item-Label {
+  width: 100%;
+  max-width: 248px;
+  letter-spacing: 0.05em;
+  font-weight: bold;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label {
+    max-width: inherit;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+  }
+}
+.Form-Item-Label.isMsg {
+  margin-top: 8px;
+  margin-bottom: auto;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label.isMsg {
+    margin-top: 0;
+  }
+}
+.Form-Item-Label-Required {
+  border-radius: 6px;
+  margin-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 48px;
+  display: inline-block;
+  text-align: center;
+  background: #5bc8ac;
+  color: #fff;
+  font-size: 14px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Label-Required {
+    border-radius: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 32px;
+    font-size: 10px;
+  }
+}
+.Form-Item-Input {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 48px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #eaedf2;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Input {
+    margin-left: 0;
+    margin-top: 18px;
+    height: 40px;
+    flex: inherit;
+    font-size: 15px;
+  }
+}
+.Form-Item-Textarea {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-left: 40px;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 216px;
+  flex: 1;
+  width: 100%;
+  max-width: 410px;
+  background: #eaedf2;
+  font-size: 18px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Item-Textarea {
+    margin-top: 18px;
+    margin-left: 0;
+    height: 200px;
+    flex: inherit;
+    font-size: 15px;
+  }
+}
+.Form-Btn {
+  border-radius: 6px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 280px;
+  display: block;
+  letter-spacing: 0.05em;
+  background: #5bc8ac;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+}
+@media screen and (max-width: 480px) {
+  .Form-Btn {
+    margin-top: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 160px;
+    font-size: 16px;
+  }
+}
+.check_lb {
+  display:block;
+}
+
+</style>
+
 </head>
 <body>
-  <form class="w-75 mx-auto">
-    <p class="mt-3">名前</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="name" placeholder="" required>
-    </div>
-    <p class="mt-3">腕立て</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="udetate" required>
-    </div>
-    <p class="mt-3">腹筋</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="fukkin" required>
-    </div>
-    <p class="mt-3">背筋</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="haikin" required>
-    </div>
-    <p class="mt-3">スクワット</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="sukuwat" required>
-    </div>
-  </form>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-  <script>
-    liff.init({
-      liffId: '2006593403-Gxvd7V99'
-    }).catch((err) => {
-      console.log(err);
-    });
+    <form class="w-75 mx-auto">
+        <div class="Form">
+  <div class="Form-Item">
+    <p class="Form-Item-Label">お名前</p>
+    <input type="text" class="Form-Item-Input" placeholder="登録のお名前">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label">組合員番号</p>
+    <input type="text" class="Form-Item-Input" placeholder="組合員番号">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label">電話番号</p>
+    <input type="text" class="Form-Item-Input" placeholder="登録の電話番号">
+  </div>
+  <div class="Form-Item">
+    <p class="Form-Item-Label">メールアドレス</p>
+    <input type="email" class="Form-Item-Input" placeholder="例）example@gmail.com">
+  </div>
 
-    liff.ready.then(() => {
-      if (!liff.isLoggedIn()) {
-        liff.login();
-      }
-      const idToken = liff.getDecodedIDToken();
-      // console.log(idToken)
-      // const userId = idToken.sub;
-      const userToken = liff.getProfile();
-      console.log(userToken)
-      // const prof = userToken.sub;
-      
-      $('form').append(`<input type="hidden" name="userId" value="${idToken}">`);
-      $('form').append(`<input type="submit" class="mt-4 btn btn-primary" value="送信">`);
-    })
+<div>
+<p class="Form-Item"><label for="age"class="required">【問】「ぱるサポ」にお申し込みされた理由を教えてください。どの項目に興味を持たれていますか？（複数選択可）</label></p>
+                    
+                    <div class="Form__input_area">
+                        <label class="check_lb"><input type="checkbox" name="book" value="11"><span>&ensp;家庭用品（雑貨）のモニター参加</span></label>
+                        <label class="check_lb"><input type="checkbox" name="book" value="12"><span>&ensp;生産者さん・メーカーさんとの交流会</span></label>
+                        <label class="check_lb"><input type="checkbox" name="book" value="13"><span>&ensp;サポーターさん同士の交流</span></label>
+                        <label class="check_lb"><input type="checkbox" name="book" value="14"><span>&ensp;総代さんへの立候補</span></label>
+                        <label class="check_lb"><input type="checkbox" name="book" value="15"><span>&ensp;各地域が企画している生協商品の試食会や産地訪問のお知らせ</span></label>
+                        <label class="check_lb"><input type="checkbox" name="book" value="16"><span>&ensp;サポーター参加500ポイントの贈呈</span></label>
+                        
+                    </div>
+                </div> 
+    <p class="Form-Item"><label for="age"class="required">【問】「ぱるサポ」や「総代」に関する感想や気になる点などございましたら、自由にご記入ください。</label></p>
+  <div>
+    <textarea class="Form-Item-Textarea"></textarea>
+  </div>
+  <input type="submit" class="Form-Btn" value="送信する">
+</div>
+    </form>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+        
+        $(document).ready(function () {
+            const liffId = "2006593403-P3ymZQAA";
+            initializeLiff(liffId);
+        })
 
-    $('form').submit(function( event ) {
-      event.preventDefault();
-      $.post( 'https://script.google.com/macros/s/AKfycbyLJ-XI-Hn8mPFalsNfpx9khBCwjAUDdkFNOYAiGscQtTlC7BVsSuiY1f-oqLFwDo_5/exec', $('form').serialize() );
-    });
-  </script>
+        function initializeLiff(liffId) {
+            liff.init({
+                liffId: liffId
+            }).then(() => {
+                initializeApp();
+            }).catch((err) => {
+                console.log('LIFF Initialization failed ', err);
+            });
+        }
+
+        function sendText(text) {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': text
+            }]).then(function () {
+                liff.closeWindow();
+            }).catch(function (error) {
+                window.alert('Failed to send message ' + error);
+            });
+        }
+        
+        const params = (new URL(document.location)).searchParams;
+        const key = params.get('key');
+
+        $(function () {
+            $('form').submit(function () {
+                const name    = $('input[name="name"]').val();
+                const udetate = $('input[name="udetate"]').val();
+                const fukkin  = $('input[name="fukkin"]').val();
+                const haikin  = $('input[name="haikin"]').val();
+                const sukuwat = $('input[name="sukuwat"]').val();
+                const msg = `${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}`;
+                sendText(msg);
+                return false;
+            });
+        });
+
+    </script>
+
 </body>
 </html>
