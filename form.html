@@ -1,216 +1,217 @@
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ぱるサポ登録フォーム</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
-<style>
-.Form {
-  margin-top: 80px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 720px;
-}
-@media screen and (max-width: 480px) {
-  .Form {
-    margin-top: 40px;
-  }
-}
-.Form-Item {
-  border-top: 1px solid #ddd;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-@media screen and (max-width: 480px) {
-  .Form-Item {
-    padding-left: 14px;
-    padding-right: 14px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    flex-wrap: wrap;
-  }
-}
-.Form-Item:nth-child(5) {
-  border-bottom: 1px solid #ddd;
-}
-.Form-Item-Label {
-  width: 100%;
-　margin: 0 0 0 0;
-  max-width: 248px;
-  letter-spacing: 0.05em;
-  font-weight: bold;
-  font-size: 18px;
-}
-@media screen and (max-width: 480px) {
-  .Form-Item-Label {
-    max-width: inherit;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-  }
-}
-.Form-Item-Label.isMsg {
-  margin-top: 8px;
-  margin-bottom: auto;
-}
-@media screen and (max-width: 480px) {
-  .Form-Item-Label.isMsg {
-    margin-top: 0;
-  }
-}
-.Form-Item-Label-Required {
-  border-radius: 6px;
-  margin-right: 8px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  width: 48px;
-  display: inline-block;
-  text-align: center;
-  background: #5bc8ac;
-  color: #fff;
-  font-size: 14px;
-}
-@media screen and (max-width: 480px) {
-  .Form-Item-Label-Required {
-    border-radius: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    width: 32px;
-    font-size: 10px;
-  }
-}
-.Form-Item-Input {
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-left: 40px;
-  padding-left: 1em;
-  padding-right: 1em;
-  height: 48px;
-  flex: 1;
-  width: 100%;
-  max-width: 410px;
-  background: #eaedf2;
-  font-size: 18px;
-}
-@media screen and (max-width: 480px) {
-  .Form-Item-Input {
-    margin-left: 0;
-    margin-top: 18px;
-    height: 40px;
-    flex: inherit;
-    font-size: 15px;
-  }
-}
-.Form-Item-Textarea {
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-left: 40px;
-  padding-left: 1em;
-  padding-right: 1em;
-  height: 216px;
-  flex: 1;
-  width: 100%;
-  max-width: 410px;
-  background: #eaedf2;
-  font-size: 18px;
-}
-@media screen and (max-width: 480px) {
-  .Form-Item-Textarea {
-    margin-top: 18px;
-    margin-left: 0;
-    height: 200px;
-    flex: inherit;
-    font-size: 15px;
-  }
-}
-.Form-Btn {
-  border-radius: 6px;
-  margin-top: 32px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  width: 280px;
-  display: block;
-  letter-spacing: 0.05em;
-  background: #5bc8ac;
-  color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-}
-@media screen and (max-width: 480px) {
-  .Form-Btn {
-    margin-top: 24px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    width: 160px;
-    font-size: 16px;
-  }
-}
-.check_lb {
-  display:block;
-}
-
-</style>
-
-</head>
-<body>
-
-    <form class="w-75 mx-auto">
-        <div class="Form">
-  <div class="Form-Item">
-    <p class="Form-Item-Label">お名前</p>
-    <input type="text" name="name" class="Form-Item-Input" placeholder="登録のお名前">
-  </div>
-  <div class="Form-Item">
-    <p class="Form-Item-Label">組合員番号</p>
-    <input type="text" name="kumi" class="Form-Item-Input" placeholder="組合員番号">
-  </div>
-  <div class="Form-Item">
-    <p class="Form-Item-Label">電話番号</p>
-    <input type="text" name="tel" class="Form-Item-Input" placeholder="登録の電話番号">
-  </div>
-  <div class="Form-Item">
-    <p class="Form-Item-Label">メールアドレス</p>
-    <input type="email" name="mail" class="Form-Item-Input" placeholder="例）example@gmail.com">
-  </div>
-
-　<div>
-    <p class="Form-Item"><label for="age"class="required">【問1】「ぱるサポ」にお申し込みされた理由を教えてください。どの項目に興味を持たれていますか？（複数選択可）</label></p>   
-       <div class="Form__input_area">
-         <label class="check_lb"><input type="checkbox" name="toi1" value="11"><span>&ensp;家庭用品（雑貨）のモニター参加</span></label>
-         <label class="check_lb"><input type="checkbox" name="toi1" value="12"><span>&ensp;生産者さん・メーカーさんとの交流会</span></label>
-         <label class="check_lb"><input type="checkbox" name="toi1" value="13"><span>&ensp;サポーターさん同士の交流</span></label>
-         <label class="check_lb"><input type="checkbox" name="toi1" value="14"><span>&ensp;総代さんへの立候補</span></label>
-         <label class="check_lb"><input type="checkbox" name="toi1" value="15"><span>&ensp;各地域が企画している生協商品の試食会や産地訪問のお知らせ</span></label>
-         <label class="check_lb"><input type="checkbox" name="toi1" value="16"><span>&ensp;サポーター参加500ポイントの贈呈</span></label>
-       </div>
-  </div> 
-    <p class="Form-Item"><label for="age"class="required">【問2】「ぱるサポ」や「総代」に関する感想や気になる点などございましたら、自由にご記入ください。</label></p>
-  <div>
-    <textarea name="toi2" class="Form-Item-Textarea"></textarea>
-  </div>
-  <input type="submit" class="Form-Btn" value="送信する">
-</div>
-    </form>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ぱるサポ登録フォーム</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <style>
+    .Form {
+      margin-top: 80px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 720px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form {
+        margin-top: 40px;
+      }
+    }
+    .Form-Item {
+      border-top: 1px solid #ddd;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item {
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        flex-wrap: wrap;
+      }
+    }
+    .Form-Item:nth-child(5) {
+      border-bottom: 1px solid #ddd;
+    }
+    .Form-Item-Label {
+      width: 100%;
+    margin: 0 0 0 0;
+      max-width: 248px;
+      letter-spacing: 0.05em;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Label {
+        max-width: inherit;
     
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-    <script>
-        
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+      }
+    }
+    .Form-Item-Label.isMsg {
+      margin-top: 8px;
+      margin-bottom: auto;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Label.isMsg {
+        margin-top: 0;
+      }
+    }
+    .Form-Item-Label-Required {
+      border-radius: 6px;
+      margin-right: 8px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      width: 48px;
+      display: inline-block;
+      text-align: center;
+      background: #5bc8ac;
+      color: #fff;
+      font-size: 14px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Label-Required {
+        border-radius: 4px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        width: 32px;
+        font-size: 10px;
+      }
+    }
+    .Form-Item-Input {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-left: 40px;
+      padding-left: 1em;
+      padding-right: 1em;
+      height: 48px;
+      flex: 1;
+      width: 100%;
+      max-width: 410px;
+      background: #eaedf2;
+      font-size: 18px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Input {
+        margin-left: 0;
+        margin-top: 18px;
+        height: 40px;
+        flex: inherit;
+        font-size: 15px;
+      }
+    }
+    .Form-Item-Textarea {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-left: 40px;
+      padding-left: 1em;
+      padding-right: 1em;
+      height: 216px;
+      flex: 1;
+      width: 100%;
+      max-width: 410px;
+      background: #eaedf2;
+      font-size: 18px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Textarea {
+        margin-top: 18px;
+        margin-left: 0;
+        height: 200px;
+        flex: inherit;
+        font-size: 15px;
+      }
+    }
+    .Form-Btn {
+      border-radius: 6px;
+      margin-top: 32px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      width: 280px;
+      display: block;
+      letter-spacing: 0.05em;
+      background: #5bc8ac;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Btn {
+        margin-top: 24px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 160px;
+        font-size: 16px;
+      }
+    }
+    .check_lb {
+      display:block;
+    }
+    
+    </style>
+    
+    </head>
+    <body>
+        <form class="w-75 mx-auto">
+            <div class="Form">
+                <div class="Form-Item">
+                    <p class="Form-Item-Label">お名前</p>
+                    <input type="text" id="name" name="name" class="Form-Item-Input" placeholder="登録のお名前" required>
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label">組合員番号</p>
+                    <input type="number" id="kumi" name="kumi" class="Form-Item-Input" maxlength="8" placeholder="組合員番号" required>
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label">電話番号（ハイフォン「-」無し）</p>
+                    <input type="tel" id="tel" name="tel" class="Form-Item-Input" placeholder="登録の電話番号" required>
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label">メールアドレス</p>
+                    <input type="email" id="mail" name="mail" class="Form-Item-Input" placeholder="例）example@gmail.com">
+                </div>
+                <div>
+                    <p class="Form-Item"><label for="age"class="required">【問1】「ぱるサポ」にお申し込みされた理由を教えてください。どの項目に興味を持たれていますか？（複数選択可）</label></p>
+                </div>
+                <div class="Form__input_area">
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="11"><span>&ensp;家庭用品（雑貨）のモニター参加</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="12"><span>&ensp;生産者さん・メーカーさんとの交流会</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="13"><span>&ensp;サポーターさん同士の交流</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="14"><span>&ensp;総代さんへの立候補</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="15"><span>&ensp;各地域が企画している生協商品の試食会や産地訪問のお知らせ</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="16"><span>&ensp;サポーター参加500ポイントの贈呈</span></label>
+                </div>
+            </div>
+            <div>
+                <p class="Form-Item"><label for="age"class="required">【問2】「ぱるサポ」や「総代」に関する感想や気になる点などございましたら、自由にご記入ください。</label></p>
+            </div>
+            <div>
+                <textarea id="toi2" name="toi2" class="Form-Item-Textarea"></textarea>
+            </div>
+        </form>
+        <div><button class="Form-Btn" onclick = "submit()">送信する</button></div>
+        <br><br><br>
+            
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+        <script>
         $(document).ready(function () {
             const liffId = "2006593403-P3ymZQAA";
             initializeLiff(liffId);
         })
-
+            
         function initializeLiff(liffId) {
             liff.init({
                 liffId: liffId
@@ -220,12 +221,10 @@
                 console.log('LIFF Initialization failed ', err);
             });
         }
-
+        
         function getValue() {
-
             var checks = document.getElementsByName('toi1');
             var str = '';
-
             for ( i = 0; i < 6; i++) {
                 if ( checks[i].checked === true ) {
                     str += checks[i].value + " ";
@@ -233,7 +232,7 @@
             }
             return str;
         }
-
+            
         function sendText(text) {
             liff.sendMessages([{
                 'type': 'text',
@@ -245,25 +244,62 @@
             });
         }
         
-        const params = (new URL(document.location)).searchParams;
-        const key = params.get('key');
-
-        $(function () {
-            $('form').submit(function () {
-                const name    = $('input[name="name"]').val();
-                const kumi = $('input[name="kumi"]').val();
-                const tel  = $('input[name="tel"]').val();
-                const mail  = $('input[name="mail"]').val();
-                const check1 = getValue();
-                const toi = $('textarea[name="toi2"]').val();
-                const msg = `${name}\n${kumi}\n${tel}\n${mail}\n${check1}\n${toi}`;
-alert(msg);
+        function submit(){
+            const name = document.getElementById('name').value;
+            const kumi = document.getElementById('kumi').value;
+            const tel = document.getElementById('tel').value;
+            const mail = document.getElementById('mail').value;
+            const check1 = getValue();
+            const toi = document.getElementById('toi2').value;
+            
+            let error = ''; // 記入漏れ
+            let error2 = ''; // 文字エラー
+            let error3 = ''; //
+            
+            if (!name) {
+                error += '「お名前」';
+            }
+            
+            if (!kumi) {
+                error += '「組合員番号」';
+            }else{
+                const numericValue1 = parseInt(kumi);
+                // 数値に変換できない場合は空文字に
+                if (isNaN(numericValue1)) {
+                    error2 += '組合員番号に数字以外の文字が入っています。';
+                }
+            }
+            
+            if (!tel) {
+                error += '「お電話番号」';
+            }else{
+                const numericValue2 = parseInt(tel);
+                // 数値に変換できない場合は空文字に
+                if (isNaN(numericValue2)) {
+                    error2 += '電話番号に数字以外の文字が入っています。';
+                }
+            }
+            
+            if (!check1) {
+                error += '「問1」が何も選択されていません。';
+            }
+            
+            if (error) {
+                alert(error + 'を入力してください。');
+            } else {
+                console.log('入力内容:', name, kumi, tel, mail, check1, toi);
+                // サーバーに送信するデータを作成 (例: JSON形式)
+                const msg = {
+                    name,
+                    kumi,
+                    tel,
+                    mail,
+                    check1,
+                    toi
+                };
                 sendText(msg);
-                return false;
-            });
-        });
-
-    </script>
-
-</body>
+            }
+        }
+        </script>
+    </body>
 </html>
