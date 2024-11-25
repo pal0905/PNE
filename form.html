@@ -49,7 +49,7 @@
     @media screen and (max-width: 480px) {
       .Form-Item-Label {
         max-width: inherit;
-    
+
         display: flex;
         align-items: center;
         font-size: 15px;
@@ -156,9 +156,9 @@
     .check_lb {
       display:block;
     }
-    
+
     </style>
-    
+
     </head>
     <body>
         <form class="w-75 mx-auto">
@@ -169,11 +169,11 @@
                 </div>
                 <div class="Form-Item">
                     <p class="Form-Item-Label">組合員番号</p>
-                    <input type="number" id="kumi" name="kumi" class="Form-Item-Input" maxlength="8" placeholder="組合員番号" required>
+                    <input type="number" id="kumi" name="kumi" class="Form-Item-Input" placeholder="組合員番号" required>
                 </div>
                 <div class="Form-Item">
                     <p class="Form-Item-Label">電話番号（ハイフォン「-」無し）</p>
-                    <input type="tel" id="tel" name="tel" class="Form-Item-Input" placeholder="登録の電話番号" required>
+                    <input type="number" id="tel" name="tel" class="Form-Item-Input" placeholder="登録の電話番号" required>
                 </div>
                 <div class="Form-Item">
                     <p class="Form-Item-Label">メールアドレス</p>
@@ -200,7 +200,7 @@
         </form>
         <div><button class="Form-Btn" onclick = "submit()">送信する</button></div>
         <br><br><br>
-            
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
@@ -211,7 +211,7 @@
             const liffId = "2006593403-P3ymZQAA";
             initializeLiff(liffId);
         })
-            
+
         function initializeLiff(liffId) {
             liff.init({
                 liffId: liffId
@@ -221,7 +221,7 @@
                 console.log('LIFF Initialization failed ', err);
             });
         }
-        
+
         function getValue() {
             var checks = document.getElementsByName('toi1');
             var str = '';
@@ -232,7 +232,15 @@
             }
             return str;
         }
-            
+
+        const kumiInput = document.getElementById('kumi');
+        kumiInput.addEventListener('input', () => {
+            const value = kumiInput.value;
+            if (value.length > 8) {
+                kumiInput.value = value.slice(0, 8); // 8文字を超える部分を切り捨てる
+            }
+        });
+
         function sendText(text) {
             liff.sendMessages([{
                 'type': 'text',
@@ -243,7 +251,7 @@
                 window.alert('Failed to send message ' + error);
             });
         }
-        
+
         function submit(){
             const name = document.getElementById('name').value;
             const kumi = document.getElementById('kumi').value;
@@ -251,41 +259,32 @@
             const mail = document.getElementById('mail').value;
             const check1 = getValue();
             const toi = document.getElementById('toi2').value;
-            
+
             let error = ''; // 記入漏れ
-            let error2 = ''; // 文字エラー
-            let error3 = ''; //
-            
+            const pattern = /^[0-9]*$/;
+
             if (!name) {
-                error += '「お名前」';
+                error += '「お名前」欄が入力されていません。\n';
             }
-            
             if (!kumi) {
-                error += '「組合員番号」';
+                error += '「組合員番号」欄が入力されていないか「e」「.」「-」が入っています。\n';
             }else{
-                const numericValue1 = parseInt(kumi);
-                // 数値に変換できない場合は空文字に
-                if (isNaN(numericValue1)) {
-                    error2 += '組合員番号に数字以外の文字が入っています。';
+                if (!pattern.test(kumi)) {
+                    error += '組合員番号は数字のみで入力してください。\n';
                 }
             }
-            
             if (!tel) {
-                error += '「お電話番号」';
+                error += '「お電話番号」欄が入力されていないか「e」「.」「-」が入っています。\n';
             }else{
-                const numericValue2 = parseInt(tel);
-                // 数値に変換できない場合は空文字に
-                if (isNaN(numericValue2)) {
-                    error2 += '電話番号に数字以外の文字が入っています。';
+                if (!pattern.test(tel)) {
+                    error += '電話番号は数字のみで入力してください。\n';
                 }
             }
-            
             if (!check1) {
                 error += '「問1」が何も選択されていません。';
             }
-            
             if (error) {
-                alert(error + 'を入力してください。');
+                alert(error);
             } else {
                 console.log('入力内容:', name, kumi, tel, mail, check1, toi);
                 // サーバーに送信するデータを作成 (例: JSON形式)
