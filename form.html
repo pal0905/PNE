@@ -254,6 +254,9 @@ function submit(){
         error += '電話番号は数字のみで入力してください。\n';
     }
 console.log(check1);
+  for(var i = 0; i < check1.length; i++){
+    console.log(check1[i].value);
+  }
     if (!check1) {
         error += '「問1」が何も選択されていません。';
     }
