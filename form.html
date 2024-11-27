@@ -229,39 +229,31 @@
     
     $('form').submit(function( event ) {
       event.preventDefault();
+      console.log(submit());
       if(submit()){
         $.post( 'https://script.google.com/macros/s/AKfycbyLJ-XI-Hn8mPFalsNfpx9khBCwjAUDdkFNOYAiGscQtTlC7BVsSuiY1f-oqLFwDo_5/exec', $('form').serialize() );
       }
     });
     
 function submit(){
-    const name = document.getElementById('name').value;
+    // const name = document.getElementById('name').value;
     const kumi = document.getElementById('kumi').value;
     const tel = document.getElementById('tel').value;
     // const mail = document.getElementById('mail').value;
     const check1 = document.getElementsByName('toi1');
     // const toi = document.getElementById('toi2').value;
 
-    let error = ''; // 記入漏れ
+    let error = '';
     const pattern = /^[0-9]*$/;
 
-    if (!name) {
-        error += '「お名前」欄が入力されていません。\n';
+    if (!pattern.test(kumi)) {
+        error += '組合員番号は数字のみで入力してください。\n';
     }
-    if (!kumi) {
-        error += '「組合員番号」欄が入力されていないか「e」「.」「-」が入っています。\n';
-    }else{
-        if (!pattern.test(kumi)) {
-            error += '組合員番号は数字のみで入力してください。\n';
-        }
+
+    if (!pattern.test(tel)) {
+        error += '電話番号は数字のみで入力してください。\n';
     }
-    if (!tel) {
-        error += '「お電話番号」欄が入力されていないか「e」「.」「-」が入っています。\n';
-    }else{
-        if (!pattern.test(tel)) {
-            error += '電話番号は数字のみで入力してください。\n';
-        }
-    }
+    
     if (!check1) {
         error += '「問1」が何も選択されていません。';
     }
@@ -269,7 +261,7 @@ function submit(){
         alert(error);
       return false;
     } else {
-        console.log('入力内容:', name, kumi, tel, check1);
+        console.log('入力内容:', kumi, tel, check1);
       return true;
     }
 }
