@@ -251,8 +251,7 @@ function submit(){
     }
     if (kumi.length !== 8) {
         error += '組合員番号は8桁必要です。\n';
-    }
-    if (Number(kumi) < 10000000 && Number(kumi) > 50000000 ) {
+    }else if (kumi.length === 8 && Number(kumi) < 10000000 && Number(kumi) > 50000000 ) {
         error += '頭の数字は「1～4」です。\n';
     }
     if (!pattern.test(tel)) {
