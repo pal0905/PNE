@@ -1,63 +1,321 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LIFF Stripe Checkout</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
-</head>
-<body>
-  <form class="w-75 mx-auto">
-    <p class="mt-3">名前</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="name" placeholder="" required>
-    </div>
-    <p class="mt-3">腕立て</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="udetate" required>
-    </div>
-    <p class="mt-3">腹筋</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="fukkin" required>
-    </div>
-    <p class="mt-3">背筋</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="haikin" required>
-    </div>
-    <p class="mt-3">スクワット</p>
-    <div>
-        <input class="form-control w-100 mt-1" name="sukuwat" required>
-    </div>
-  </form>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-  <script>
-    liff.init({
-      liffId: '2006593403-Gxvd7V99'
-    }).catch((err) => {
-      console.log(err);
-    });
-
-    liff.ready.then(() => {
-      if (!liff.isLoggedIn()) {
-        liff.login();
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ぱるサポ登録フォーム</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <style>
+    .Form {
+      margin-top: 80px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 720px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form {
+        margin-top: 40px;
       }
-      const idToken = liff.getDecodedIDToken();
-      const userId = idToken.sub;
-      $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
-      $('form').append(`<input type="submit" class="mt-4 btn btn-primary" value="送信">`);
-    })
+    }
+    .Form-Item {
+      border-top: 1px solid #ddd;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item {
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        flex-wrap: wrap;
+      }
+    }
+    .Form-Item:nth-child(5) {
+      border-bottom: 1px solid #ddd;
+    }
+    .Form-Item-Label {
+      width: 100%;
+    margin: 0 0 0 0;
+      max-width: 248px;
+      letter-spacing: 0.05em;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Label {
+        max-width: inherit;
 
-    $('form').submit(function( event ) {
-      event.preventDefault();
-      $.post( 'https://script.google.com/macros/s/AKfycbyLJ-XI-Hn8mPFalsNfpx9khBCwjAUDdkFNOYAiGscQtTlC7BVsSuiY1f-oqLFwDo_5/exec', $('form').serialize() );
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+      }
+    }
+    .Form-Item-Label.isMsg {
+      margin-top: 8px;
+      margin-bottom: auto;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Label.isMsg {
+        margin-top: 0;
+      }
+    }
+    .Form-Item-Label-Required {
+      border-radius: 6px;
+      margin-right: 8px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      width: 48px;
+      display: inline-block;
+      text-align: center;
+      background: #5bc8ac;
+      color: #fff;
+      font-size: 14px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Label-Required {
+        border-radius: 4px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        width: 32px;
+        font-size: 10px;
+      }
+    }
+    .Form-Item-Input {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-left: 40px;
+      padding-left: 1em;
+      padding-right: 1em;
+      height: 48px;
+      flex: 1;
+      width: 100%;
+      max-width: 410px;
+      background: #eaedf2;
+      font-size: 18px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Input {
+        margin-left: 0;
+        margin-top: 18px;
+        height: 40px;
+        flex: inherit;
+        font-size: 15px;
+      }
+    }
+    .Form-Item-Textarea {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin-left: 40px;
+      padding-left: 1em;
+      padding-right: 1em;
+      height: 216px;
+      flex: 1;
+      width: 100%;
+      max-width: 410px;
+      background: #eaedf2;
+      font-size: 18px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Item-Textarea {
+        margin-top: 18px;
+        margin-left: 0;
+        height: 200px;
+        flex: inherit;
+        font-size: 15px;
+      }
+    }
+    .Form-Btn {
+      border-radius: 6px;
+      margin-top: 32px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      width: 280px;
+      display: block;
+      letter-spacing: 0.05em;
+      background: #5bc8ac;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    @media screen and (max-width: 480px) {
+      .Form-Btn {
+        margin-top: 24px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 160px;
+        font-size: 16px;
+      }
+    }
+    .check_lb {
+      display:block;
+    }
+
+    </style>
+
+    </head>
+    <body>
+        <form class="w-75 mx-auto">
+            <div class="Form">
+                <div class="Form-Item">
+                    <p class="Form-Item-Label">お名前</p>
+                    <input type="text" id="name" name="name" class="Form-Item-Input" placeholder="登録のお名前" required>
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label">組合員番号</p>
+                    <input type="number" id="kumi" name="kumi" class="Form-Item-Input" placeholder="組合員番号" required>
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label">電話番号（ハイフォン「-」無し）</p>
+                    <input type="number" id="tel" name="tel" class="Form-Item-Input" placeholder="登録の電話番号" required>
+                </div>
+                <div class="Form-Item">
+                    <p class="Form-Item-Label">メールアドレス</p>
+                    <input type="email" id="mail" name="mail" class="Form-Item-Input" placeholder="例）example@gmail.com">
+                </div>
+                <div>
+                    <p class="Form-Item"><label for="age"class="required">【問1】「ぱるサポ」にお申し込みされた理由を教えてください。どの項目に興味を持たれていますか？（複数選択可）</label></p>
+                </div>
+                <div class="Form__input_area">
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="11"><span>&ensp;家庭用品（雑貨）のモニター参加</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="12"><span>&ensp;生産者さん・メーカーさんとの交流会</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="13"><span>&ensp;サポーターさん同士の交流</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="14"><span>&ensp;総代さんへの立候補</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="15"><span>&ensp;各地域が企画している生協商品の試食会や産地訪問のお知らせ</span></label>
+                    <label class="check_lb"><input type="checkbox" name="toi1" value="16"><span>&ensp;サポーター参加500ポイントの贈呈</span></label>
+                </div>
+            </div>
+            <div>
+                <p class="Form-Item"><label for="age"class="required">【問2】「ぱるサポ」や「総代」に関する感想や気になる点などございましたら、自由にご記入ください。</label></p>
+            </div>
+            <div>
+                <textarea id="toi2" name="toi2" class="Form-Item-Textarea"></textarea>
+            </div>
+        </form>
+        <div><button class="Form-Btn" onclick = "submit()">送信する</button></div>
+        <br><br><br>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+        <script>
+        $(document).ready(function () {
+            const liffId = "2006593403-Gxvd7V99";
+            initializeLiff(liffId);
+        })
+
+        function initializeLiff(liffId) {
+            liff.init({
+        liffId: liffId
+    }).then(() => {
+        if (!liff.isLoggedIn()) {
+            liff.login();
+        } else {
+            // ログイン済みの場合
+            const userId = liff.getUserId();
+            // userIDを元にユーザー情報を取得する処理などをここに記述
+            initializeApp(userId);
+        }
+    }).catch((err) => {
+        console.log('LIFF Initialization failed ', err);
     });
-  </script>
-</body>
+        }
+
+        function getValue() {
+            var checks = document.getElementsByName('toi1');
+            var str = '';
+            for ( i = 0; i < 6; i++) {
+                if ( checks[i].checked === true ) {
+                    str += checks[i].value + " ";
+                }
+            }
+            return str;
+        }
+
+        const kumiInput = document.getElementById('kumi');
+        kumiInput.addEventListener('input', () => {
+            const value = kumiInput.value;
+            if (value.length > 8) {
+                kumiInput.value = value.slice(0, 8); // 8文字を超える部分を切り捨てる
+            }
+        });
+
+        function sendDataToGAS(data) {
+    fetch('https://script.google.com/macros/s/AKfycbyLJ-XI-Hn8mPFalsNfpx9khBCwjAUDdkFNOYAiGscQtTlC7BVsSuiY1f-oqLFwDo_5/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // GASからのレスポンス処理
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        // エラー発生時の処理 (e.g., エラーメッセージを表示)
+    });
+}
+
+        function submit(){
+            const name = document.getElementById('name').value;
+            const kumi = document.getElementById('kumi').value;
+            const tel = document.getElementById('tel').value;
+            const mail = document.getElementById('mail').value;
+            const check1 = getValue();
+            const toi = document.getElementById('toi2').value;u
+
+            let error = ''; // 記入漏れ
+            const pattern = /^[0-9]*$/;
+
+            if (!name) {
+                error += '「お名前」欄が入力されていません。\n';
+            }
+            if (!kumi) {
+                error += '「組合員番号」欄が入力されていないか「e」「.」「-」が入っています。\n';
+            }else{
+                if (!pattern.test(kumi)) {
+                    error += '組合員番号は数字のみで入力してください。\n';
+                }
+            }
+            if (!tel) {
+                error += '「お電話番号」欄が入力されていないか「e」「.」「-」が入っています。\n';
+            }else{
+                if (!pattern.test(tel)) {
+                    error += '電話番号は数字のみで入力してください。\n';
+                }
+            }
+            if (!check1) {
+                error += '「問1」が何も選択されていません。';
+            }
+            if (error) {
+                alert(error);
+            } else {
+                console.log('入力内容:', name, kumi, tel, mail, check1, toi);
+                // サーバーに送信するデータを作成 (例: JSON形式)
+const userId = liff.getUserId(); // userIDを取得
+                const data = {
+userId,
+                    name,
+                    kumi,
+                    tel,
+                    mail,
+                    check1,
+                    toi
+                };
+sendDataToGAS(data);
+            }
+        }
+        </script>
+    </body>
 </html>
