@@ -244,15 +244,20 @@ function submit(){
 
     let error = '';
     const pattern = /^[0-9]*$/;
-
+    let firstChar = kumi.slice(0, 1);
+  
     if (!pattern.test(kumi)) {
         error += '組合員番号は数字のみで入力してください。\n';
     }else{
-      if (Number(kumi).length !== 8) {
+      if (kumi.length !== 8) {
           error += '組合員番号は8桁必要です。\n';
-      } else if(Number(kumi).length === 8){
-        if (Number(kumi) < 10000000 && Number(kumi) > 49999999 ) {
-            error += '頭の数字は「1～4」です。\n';
+      } else if(kumi.length === 8){
+        if(firstChar !== '0'){
+          if (Number(firstChar) < 1 && Number(firstChar) > 4 ) {
+              error += '頭の数字は「1～4」です。\n';
+          }
+        }else{
+          error += '組合員番号が間違っています（頭文字「0」）。\n';
         }
       }
     }
