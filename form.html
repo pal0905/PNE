@@ -72,10 +72,26 @@
   		}
     });
 
+function getValue() {
+    var checks = document.getElementsByName('toi1');
+    var str = '';
+    for ( i = 0; i < 6; i++) {
+	if ( checks[i].checked === true ) {
+	    str += checks[i].value + " ";
+	}
+    }
+    return str;
+}
 
+const kumiInput = document.getElementById('kumi');
+kumiInput.addEventListener('input', () => {
+    const value = kumiInput.value;
+    if (value.length > 8) {
+	kumiInput.value = value.slice(0, 8); // 8文字を超える部分を切り捨てる
+    }
+});
 
 function submit() {
-alert('きた２')
   const name = document.getElementById('name').value;
   const kumi = document.getElementById('kumi').value;
   const tel = document.getElementById('tel').value;
