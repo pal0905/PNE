@@ -253,15 +253,16 @@ function submit(){
     if (!pattern.test(tel)) {
         error += '電話番号は数字のみで入力してください。\n';
     }
-    
+console.log(check1);
     if (!check1) {
         error += '「問1」が何も選択されていません。';
     }
+  
     if (error) {
-        alert(error);
+alert(error);
       return false;
     } else {
-        console.log('入力内容:', kumi, tel, check1);
+console.log('入力内容:', kumi, tel, check1);
       return true;
     }
 }
