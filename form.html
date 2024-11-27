@@ -60,16 +60,18 @@
     liff.ready.then(() => {
     	if (!liff.isLoggedIn()) {
     		liff.login();
-    	}else {
-    		const idToken = liff.getDecodedIDToken();
-		    const userId = idToken.sub;
-		    $('form').append(`<input type="hidden" name="userId" value="${userId}">`);
-		    $('form').on('submit',
-		    	function(event) {event.preventDefault();
-      				if (submit()) { const formData = $(this).serialize();
-      			}
-      		});
-  		}
+    	} else {
+		const idToken = liff.getDecodedIDToken();
+		const userId = idToken.sub;
+		$('form').append(`<input type="hidden" name="userId" value="${userId}">`);
+		$('form').on('submit',
+		function(event) {
+			event.preventDefault();
+			if (submit()) {
+				const formData = $(this).serialize();
+			}
+		});
+  	}
     });
 
 function getValue() {
