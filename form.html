@@ -235,11 +235,11 @@
     });
     
 function submit(){
-    // const name = document.getElementById('name').value;
     const kumi = document.getElementById('kumi').value;
     const tel = document.getElementById('tel').value;
-    // const mail = document.getElementById('mail').value;
     const check1 = document.getElementsByName('toi1');
+    // const name = document.getElementById('name').value;
+    // const mail = document.getElementById('mail').value;
     // const toi = document.getElementById('toi2').value;
 
     let error = '';
@@ -270,7 +270,7 @@ function submit(){
     }
   
     if (error) {
-      alset(error);
+      alert(error);
       return false;
     } else {
       return true;
