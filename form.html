@@ -249,15 +249,19 @@ function submit(){
     if (!pattern.test(kumi)) {
         error += '組合員番号は数字のみで入力してください。\n';
     }
-
+    if (kumi.length !== 8) {
+        error += '組合員番号は8桁必要です。\n';
+    }
     if (!pattern.test(tel)) {
         error += '電話番号は数字のみで入力してください。\n';
     }
-
-  for(var i = 0; i < check1.length; i++){
-    console.log(check1[i].checked);
-  }
-    if (!check1) {
+    var num = 0;
+    for(var i = 0; i < check1.length; i++){
+      if(check1[i].checked === ture){
+        num += 1;
+      }
+    }
+    if (num === 0) {
         error += '「問1」が何も選択されていません。';
     }
   
