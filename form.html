@@ -127,7 +127,6 @@ function submit() {
     alert(error);
     return false;
   } else {
-alert('きた２－２')
     // バリデーションが成功した場合、送信するデータを整形
     const data = {
       name,
@@ -144,6 +143,25 @@ alert('きた２－２')
   }
 }
 
+function sendDataToGAS(data) {
+    fetch('https://script.google.com/macros/s/AKfycbyLJ-XI-Hn8mPFalsNfpx9khBCwjAUDdkFNOYAiGscQtTlC7BVsSuiY1f-oqLFwDo_5/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        // GASからのレスポンス処理
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        // エラー発生時の処理 (e.g., エラーメッセージを表示)
+    });
+}
+	  
   </script>
 </body>
 </html>
