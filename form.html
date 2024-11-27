@@ -219,6 +219,14 @@
       $('form').append(`<input type="submit" class="mt-4 btn btn-primary" value="送信">`);
     })
 
+    const kumiInput = document.getElementById('kumi');
+    kumiInput.addEventListener('input', () => {
+        const value = kumiInput.value;
+        if (value.length > 8) {
+            kumiInput.value = value.slice(0, 8); // 8文字を超える部分を切り捨てる
+        }
+    });
+    
     $('form').submit(function( event ) {
       event.preventDefault();
       $.post( 'https://script.google.com/macros/s/AKfycbyLJ-XI-Hn8mPFalsNfpx9khBCwjAUDdkFNOYAiGscQtTlC7BVsSuiY1f-oqLFwDo_5/exec', $('form').serialize() );
