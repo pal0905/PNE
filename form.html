@@ -231,6 +231,7 @@
       event.preventDefault();
       if(submit()){
         $.post( 'https://script.google.com/macros/s/AKfycbyLJ-XI-Hn8mPFalsNfpx9khBCwjAUDdkFNOYAiGscQtTlC7BVsSuiY1f-oqLFwDo_5/exec', $('form').serialize() );
+        liff.closeWindow();
       }
     });
     
