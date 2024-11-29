@@ -248,20 +248,18 @@ function submit(){
     let firstChar = kumi.slice(0, 1);
   
     if (!pattern.test(kumi)) {
-        error += '組合員番号は数字のみで入力してください。\n';
-    }else{
-      if (kumi.length !== 8) {
-          error += '組合員番号は8桁必要です。\n';
-      } else if(kumi.length === 8){
-        if(firstChar !== '0'){
-          if (Number(firstChar) < 1 && Number(firstChar) > 4 ) {
-              error += '頭の数字は「1～4」です。\n';
-          }
-        }else{
-          error += '組合員番号が間違っています（頭文字「0」）。\n';
-        }
+      error += '組合員番号は数字のみで入力してください。\n';
+    } else if (kumi.length !== 8) {
+      error += '組合員番号は8桁必要です。\n';
+    } else {
+      const firstChar = kumi.charAt(0); // 0番目の文字を取得
+      if (firstChar !== '0' && (Number(firstChar) < 1 || Number(firstChar) > 4)) {
+        error += '頭の数字は「1～4」です。\n';
+      } else if (firstChar === '0') {
+        error += '組合員番号が間違っています（頭文字「0」）。\n';
       }
     }
+  
     if (!pattern.test(tel)) {
         error += '電話番号は数字のみで入力してください。\n';
     }
