@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GAS からの JSON データ表示 (XMLHttpRequest版)</title>
+</head>
+<body>
+  <form id="searchForm">
+    <input type="text" id="searchValue" placeholder="検索値を入力">
+    <button type="submit">検索</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    const scriptUrl = 'https://script.google.com/macros/s/1b7jWTzeA7I9ReOACSDS0Q-OLWk45df_wsDP4zgmUXdgZwvJWsfwNhXhW/exec';
+
+    const searchForm = document.getElementById('searchForm');
+    const resultDiv = document.getElementById('result');
+
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const searchValue = document.getElementById('searchValue').value;
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', scriptUrl);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          resultDiv.textContent = JSON.stringify(data, null, 2);
+        } else {
+          console.error('Request failed.  Returned status of ' + xhr.status);
+        }
+      };
+      xhr.send(`searchValue=${searchValue}`);
+    });
+  </script>
+</body>
+</html>
